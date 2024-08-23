@@ -26,7 +26,7 @@ Join the workshop to master building end-to-end data solutions with Microsoft Fa
 
 
 > [!IMPORTANT]
-> 9:00 am - 9:30 am - [Introduction, Set Up and Overview of Fabric Data Platform](exercise-0-setup/start.md)
+> 9:00 am - 9:30 am - [Introduction, Set Up and Overview of Fabric Analytics Platform](exercise-0-setup/start.md)
 > 
 > 9:30 am - 10:00 am - [Exercise 1 - Ingest data with data pipelines and shortcuts](./exercise-1/exercise-1.md) 
 > 
@@ -34,7 +34,7 @@ Join the workshop to master building end-to-end data solutions with Microsoft Fa
 > 
 > 10:15 am - 10:45 am - [Exercise 1 - Ingest data with data pipelines and shortcuts](./exercise-1/exercise-1.md)
 > 
-> 10:45 am - 11:45 pm - [Exercise 2 - Transform data using Notebooks and Spark clusters](./exercise-2/exercise-2.md)
+> 10:45 am - 11:45 pm - [Exercise 2 - Transform data using Notebooks and Spark Pools](./exercise-2/exercise-2.md)
 > 
 > 11:45 am - 12:45 pm - Lunch 60 minutes
 > 
