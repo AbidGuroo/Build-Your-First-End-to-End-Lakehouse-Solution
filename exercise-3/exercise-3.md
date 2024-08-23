@@ -1,197 +1,146 @@
-# Exercise 3 - Collaborate inside Notebooks and share Lakehouse. Use SQL Endpoint and SSMS
+# Exercise 3 - Serve and consume data using Power BI and Data Science 
 
 > [!NOTE]
-> Timebox: 30 minutes
+> Timebox: 60 minutes
 > 
 > [Back to Agenda](./../README.md#agenda) | [Back to Exercise 2](./../exercise-2/exercise-2.md) | [Up next Exercise 4](./../exercise-4/exercise-4.md)
 > #### List of exercises:
-> * [Task 3.1 Retrieve Lakehouse SQL Analytics Endpoint Connection String](#task-31-retrieve-lakehouse-sql-analytics-endpoint-connection-string)
-> * [Task 3.2 Connect to a Fabric SQL Endpoint Using SQL Server Management Studio (SSMS)](#task-32-connect-to-a-fabric-sql-endpoint-using-sql-server-management-studio-ssms)
-> * [Task 3.3 Execute T-SQL Queries on Lakehouse Delta Tables](#task-33-execute-t-sql-queries-on-lakehouse-delta-tables)
-> * [Task 3.4 Sharing a Lakehouse](#task-34-sharing-a-lakehouse)
-> * [Task 3.5 Sharing a Notebook for Collaboration](#task-35-sharing-a-notebook-for-collaboration)
+> * [Task 3.1 Predict Trip Duration Using Data Science in Fabric Lakehouse](#task-41-predict-trip-duration-using-data-science-in-fabric-lakehouse)
+> * [Task 3.2 Explore and Visualize Taxi Trip Data Using Power BI and Direct Lake](#task-42-explore-and-visualize-taxi-trip-data-using-power-bi-and-direct-lake)
+> * [Task 3.3 Publish and Share the Power BI Report](#task-43-publish-and-share-the-power-bi-report)
 
+# Context
 
-The **SQL Analytics Endpoint** of a Fabric Lakehouse Offers a SQL-based experience for analyzing data in lakehouse delta tables using T-SQL language, with features like saving functions, generating views, and applying SQL security.
+The data in your lakehouse tables is included in a dataset that defines a relational model for your data. You can edit this dataset, defining custom measures, hierarchies, aggregations, and other elements of a data model. You can then use the dataset as the source for a Power BI report that enables you to visualize and analyze the data.
 
-When a lakehouse is shared, users are automatically granted Read permission, which applies to the lakehouse itself, the linked SQL endpoint, and the default semantic model. Beyond this standard access, users may also be granted:
+You can leverage the **DirectLake** feature to create Power BI datasets directly on top of your data stored in the Lakehouse. DirectLake enhances query performance when dealing with large data volumes and seamlessly integrates with Lakehouse workloads that read and write Parquet files. By combining the data visualization capabilities of Power BI with the centralized storage and tabular schema of a data lakehouse, you can implement an end-to-end analytics solution on a single platform.
 
--   **ReadData** permission for the SQL endpoint, enabling data access without the enforcement of SQL policies.
--   **ReadAll** permission for the lakehouse, allowing comprehensive data access via Apache Spark.
--   **Build** permission for the default semantic model, permitting the creation of Power BI reports utilizing this model
-  
----
+**Fabric enables you to visualize** the results of a single query or your entire data warehouse, **without leaving the data warehouse experience**. Exploring data while you work to ensure you have all the necessary data and transformations for your analysis is particularly useful.
 
-# Task 3.1 Retrieve Lakehouse SQL Analytics Endpoint Connection String
+Use the **Visualize button** to create a new Power BI report from the results of your query. Creating a new report with the results of your query will open a Power BI window.
 
-The goal is to obtain the SQL connection string for your Lakehouse's SQL analytics endpoint, which is crucial for connecting and querying your data through SQL-based tools.
-
-1. **Access the Analytics Endpoint**:
-   - Go to your workspace and find the Lakehouse SQL analytics endpoint.
-   - Click on `More options` (usually represented by three dots or an ellipsis icon) associated with the analytics endpoint.
-
-2. **Copy the SQL Connection String**:
-   - From the available options, select `Copy SQL connection string`.
-   - This action copies the connection string to your clipboard, ensuring you have the necessary information to establish a SQL connection.
-     ![Copy Connection String](../screenshots/3/CopyConnectionString.png)
-
-3. **Utilize the Connection String**:
-   - With the connection string now on your clipboard, you can use it to connect to your Lakehouse SQL analytics endpoint.
-   - Open a database tool of your choice, such as SQL Server Management Studio (SSMS) or Azure Data Studio.
-   - Start a new connection dialogue, paste the connection string into the appropriate field, and follow the prompts to establish a connection.
-
-Ensure that you handle the connection string securely, as it provides access to your data within the Lakehouse. Avoid sharing it openly or storing it in unsecured locations. If you encounter any issues while copying or using the connection string, review the settings and permissions within your Lakehouse workspace or consult the relevant documentation.
+You can also use the **New report button** to create a new Power BI report from the contents of your entire data warehouse. Using the New report button opens the Power BI service experience where you can build and save your report for use by the business.
 
 ---
 
-# Task 3.2 Connect to a Fabric SQL Endpoint Using SQL Server Management Studio (SSMS)
-> [!TIP]
-> If you are interested in lineage and connecting through Azure Data Studio, [proceed to this additional exercise](../exercise-extra/extra.md#lineage).
- 
-The goal of this task is to establish a connection to a Fabric SQL Endpoint using SQL Server Management Studio (SSMS), enabling you to query and manage your data directly from SSMS. [Download the latest generally available (GA) version of SQL Server Management Studio (SSMS) 20.0 (485 MB)](https://aka.ms/ssmsfullsetup)
+# DirectLake vs DirectQuery in Power BI
 
-1. **Open SQL Server Management Studio**:
-   - Launch SSMS on your computer. The `Connect to Server` window should automatically appear upon opening the application. If you're already in SSMS but not connected, navigate to Object Explorer, click `Connect`, and then select `Database Engine`.
+Power BI is natively integrated in the whole Fabric experience. This native integration brings a unique mode, called DirectLake, of accessing the data from the lakehouse to provide the most performant query and reporting experience. DirectLake mode is a groundbreaking new engine capability to analyze very large datasets in Power BI. The technology is based on the idea of loading parquet-formatted files directly from a data lake without having to query a data warehouse or lakehouse endpoint, and without having to import or duplicate data into a Power BI dataset. DirectLake is a fast path to load the data from the data lake straight into the Power BI engine, ready for analysis.
 
-2. **Enter Server Details**:
-   - In the `Server name` field of the connection window, paste the SQL connection string you previously copied. This string should correspond to your Fabric SQL Endpoint.
+![Direct Lake Super Power](https://microsoft.github.io/fabricnotes/images/notes/14-direct-lake.png)
 
-3. **Authentication**:
-   - For the authentication method, select `Microsoft Entra Password` from the options. This ensures a secure connection utilizing modern authentication methods.
+In traditional DirectQuery mode, the Power BI engine queries the data directly from the data source every time it's queried and hence query performance depends on the speed data can be retrieved from the data source. This method avoids having to copy the data; any changes at the source are immediately reflected in the query results while in the import mode. And yet performance is better because the data is readily available in memory without having to query the data source each time. However, the Power BI engine must first copy the data into the dataset at refresh time. Any changes at the source are only picked up during the next data refresh.
 
-    ![password](../screenshots/3/pwd.jpg)
-
-4. **Enter User Credentials**:
-   - In the authentication window that appears, enter your workshop user email or your enterprise email ID. Follow the prompts to complete the multifactor authentication process.
-
-5. **Explore the Lakehouse**:
-   - Once connected, the Object Explorer panel in SSMS will show the connected Lakehouse. You can expand the server node to view the databases (lakehouses) and navigate through tables, views, and other objects available for querying.
-
-> [!IMPORTANT]
-> Remember to handle sensitive information, such as connection strings and credentials, securely. Ensure that you have the correct permissions to access the data and the SQL endpoint. If you encounter any connection issues, verify your connection string and authentication details. Also, check your network settings and firewall rules that may block the connection to the Fabric SQL Endpoint.
+DirectLake mode now eliminates this import requirement by loading the data files directly into memory. Because there's no explicit import process, it's possible to pick up any changes at the source as they occur, thus combining the advantages of DirectQuery and import mode while avoiding their disadvantages. DirectLake mode is therefore the ideal choice for analyzing very large datasets and datasets with frequent updates at the source.
 
 ---
 
-# Task 3.3 Execute T-SQL Queries on Lakehouse Delta Tables
+# Task 3.1 Predict Trip Duration Using Data Science in Fabric Lakehouse
 
-Execute a series of T-SQL queries on the Lakehouse Delta tables, particularly focusing on data analysis of the NYC Taxi table from the `silvercleansed` database. These queries will help you understand data aggregation, view creation, and basic SQL operations within your Lakehouse environment.
+In this exercise, you will take on the role of a data scientist tasked with exploring, cleaning, and transforming a dataset containing taxi trip data. You will build a machine learning model to predict the duration of taxi trips using the New York taxi greencab dataset containing data from 2015, which includes information like pickup and drop-off times, locations, fares, and passenger counts. You will then apply the machine learning model to generate predictions on greencab from the year 2023 asnd save them to lakehouse.
 
-1. **Count Rows in the NYC Taxi Table**:
-   - Execute the following SQL query to get the total number of rows in the `green201501_cleansed` table:
-     ```sql
-     SELECT COUNT(*)
-     FROM [silvercleansed].[dbo].[green201501_cleansed];
-     ```
+1. **Download the Exercise Notebook**:
+   - Download the provided Jupyter notebook, [Exercise 3 - Consume Data using Data Science](Exercise%203%20-%20Consume%20Data%20using%20Data%20Science.ipynb), to your local computer. This notebook contains the steps you will follow to complete the task. [This screenshot presents the steps to do it](../screenshots/extra/download-notebook-2.jpg).
 
-2. **Calculate Average Fare and Tip Amount**:
-   - Run the below query to calculate the average fare and tip amount from the same table:
-     ```sql
-     SELECT ROUND(AVG([fare_amount]),2) AS [Average Fare], 
-     ROUND(AVG([tip_amount]),2) AS [Average Tip] 
-     FROM [silvercleansed].[dbo].[green201501_cleansed];
-     ```
+2. **Import the Notebook into Fabric Workspace**:
+   - Navigate to your Fabric workspace, either in the Data Engineering or Data Science section.
+   - Import the downloaded notebook by following the instructions provided in [Exercise 2 - Importing Notebooks](../exercise-2/exercise-2.md#1-importing-the-notebook). This involves selecting the option to import existing notebooks and choosing the downloaded .ipynb file from your local computer.
 
-3. **Aggregate Fares by Passenger Count**:
-   - Use the following query to get the total and average fares grouped by the passenger count, ordered by average fares in descending order:
-     ```sql
-     SELECT DISTINCT [passenger_count], 
-     ROUND(SUM([fare_amount]),0) as TotalFares,
-     ROUND(AVG([fare_amount]),0) as AvgFares
-     FROM [silvercleansed].[dbo].[green201501_cleansed]
-     GROUP BY [passenger_count]
-     ORDER BY AvgFares DESC;
-     ```
+3. **Follow Notebook Instructions**:
+   - Once the notebook is imported into your Fabric workspace, open it.
+   - Follow the detailed steps outlined within the notebook. These will guide you through:
+     - Data exploration and cleaning: Understand the dataset's structure, clean any inconsistencies, and prepare the data for modeling.
+     - Feature engineering: Create new features from the existing data to help improve the predictive power of your machine learning model.
+     - Model training: Select and train a machine learning model using the prepared dataset.
+     - Evaluation: Assess the performance of your model based on standard metrics.
 
-4. **Compare Tipped Versus Not Tipped Trips**:
-   - Execute this query to compare the number of trips where a tip was given versus not:
-     ```sql
-     SELECT tipped, COUNT(*) AS tip_freq FROM (
-       SELECT CASE WHEN (tip_amount > 0) THEN 1 ELSE 0 END AS tipped, tip_amount
-       FROM [silvercleansed].[dbo].[green201501_cleansed]
-       WHERE [lpep_pickup_datetime] BETWEEN '20150101' AND '20151231') tc
-     GROUP BY tipped;
-     ```
-
-5. **Create a View for Average and Total Fares by Passenger Count**:
-   - Run the following SQL command to create a view based on the SQL used in step 3:
-     ```sql
-     CREATE VIEW [dbo].[viGetAverageFares]
-     AS 
-     SELECT DISTINCT [passenger_count], 
-     ROUND(SUM([fare_amount]),0) as TotalFares,
-     ROUND(AVG([fare_amount]),0) as AvgFares
-     FROM [silvercleansed].[dbo].[green201501_cleansed]
-     GROUP BY [passenger_count];
-     ```
-
-6. **Query the Newly Created View**:
-   - Lastly, retrieve data from your newly created view to ensure it's been set up correctly:
-     ```sql
-     SELECT * FROM [silvercleansed].[dbo].[viGetAverageFares];
-     ```
-
-> [!IMPORTANT]
-> Make sure you have the proper permissions to execute these queries and create views within the Lakehouse. Pay close attention to the syntax and database structure to ensure accurate results. Document any interesting findings or anomalies encountered during the analysis for further investigation or discussion.
+4. **Complete the Exercise**:
+   - Work through each step in the notebook, executing code cells and noting any insights or observations.
+   - Make sure to save your progress as you work through the notebook.
 
 ---
 
-# Task 3.4 Sharing a Lakehouse
+# Task 3.2 Explore and Visualize Taxi Trip Data Using Power BI and Direct Lake
 
-Learn how to share a Lakehouse with team members or stakeholders within your workspace, ensuring they have the appropriate level of access.
+In this exercise, you will explore and visualize taxi trip data, including the predicted trip durations from the machine learning model you developed in Task 3.1. You will use Microsoft Fabric's Direct Lake feature for direct connectivity and create a Power BI report to analyze the data.
 
-1. **Navigate to Your Lakehouse**:
-   - In your Workspace, locate the Lakehouse you wish to share.
-   - Click the **Share** button located next to the lakehouse name.
-     ![Lakehouse Share](https://github.com/ekote/Build-Your-First-End-to-End-Lakehouse-Solution/assets/63069887/f33d4f80-d24e-4804-b81f-ea4fd2f3188d)
+### Steps to Follow
 
-2. **Configure Sharing Settings**:
-   - In the Sharing dialog, enter the name or email address of the individuals you wish to share the Lakehouse with.
-   - Assign the appropriate permissions by checking the relevant boxes. By default, sharing the Lakehouse grants access to the lakehouse, the associated SQL endpoint, and the default semantic model.
+1. **Access the Lakehouse Artifact**:
+   - Navigate to the "goldcurated" lakehouse artifact within your workspace, used in previous exercises.
+   - Open the lakehouse UI to begin working with the data.
+
+2. **Create a New Semantic Model**:
+   - Click the "New semantic model" button on the top ribbon.
+   - In the dialog, name the semantic model (e.g., NYCTaxiTrips) and select **greentaxi_predicted** as the data source. Confirm to create the semantic model linked to your predictive data.
+     ![New Semantic Model](../screenshots/4/NewSemanticModel.png)
+
+3. **Generate a New Power BI Report**:
+   - In the semantic model UI, click the ***New report*** button on the top ribbon. This will open the Power BI report authoring page in a new browser tab.
    
-   ![Lakehouse Sharing Dialog](https://github.com/ekote/Build-Your-First-End-to-End-Lakehouse-Solution/assets/63069887/b7d04784-d5c6-44d9-accb-4e7119d6fea8)
+     ![New Report from Semantic Model](../screenshots/4/NewReportfromSemanticModel.png)
 
-3. **Notification Settings**:
-   - If you want to notify the recipients via email, check the **`Notify recipients by mail`** option.
-   - Include an optional message to provide context or instructions for the recipients.
 
-4. **Finalize Sharing**:
-   - Once you've configured the sharing settings and notification preferences, click **Grant** to finalize sharing the Lakehouse.
+> [!IMPORTANT]  
+> You can now create various visuals as per your requirement to generate insights from the prediction dataset or follow the steps outlined below.
 
-> [!IMPORTANT]
-> Ensure that you only share the Lakehouse with individuals who require access and have the appropriate level of permissions according to their needs and roles. Review and adhere to your organization's data sharing and privacy policies when sharing Lakehouse resources. Keep track of who has access to the Lakehouse for future reference and security compliance.
+#### Sample Visuals to analyze predictedTripDuration.
+
+1. Create a Slicer visualization for pickupDate.
+    - Select the slicer option from the visualizations pane and select ***pickupDate*** from the data pane and drop it on the created slicer visualization field of the date slider visual.
+
+2. Visualize Average tripDuration and predictedTripDuration by timeBins using a clustered column chart.
+    - Add a clustered column chart, add ***timeBins*** to X-axis, ***trip_duration*** and ***predictedtrip_duration* **to Y-axis and change the aggregation method to Average.
+
+3. Visualize Average tripDuration and predictedTripDuration by weekDayName.
+    - Add an area chart visual and add ***weekDayName* **onto X-axis, ***trip_duration*** to Y-axis and ***predictedTripDuration*** to secondary Y-axis. Switch aggregation method to Average for both Y-axes.
+
+4. Visualize Average tripDuration and predictedTripDuration by pickupDate using line chart.
+    - Add a line chart visual and add ***pickupDate*** onto X-axis, ***tripDuration*** and ***predictedTripDuration*** to Y-axis and switch aggregation method to Average for both fields.
+
+5. Create Card Visuals for single view of key metrics.
+   - Add a Card visual and drag ***tip_amount*** to fields and switch aggregation method to median.
+   - Add 2nd Card visual and drag ***fare_amount*** to fields and switch aggregation method to average.
+   - Add 3rd Card visual and drag ***predictedtrip_duration*** to fields and switch aggregation method to average. 
+   - Add 4th Card visual and drag ***trip_duration*** to fields and switch aggregation method to average.
+
+  You can now rearrange the layout and modify the aesthetics of the visuals as per your requirement and the report is ready to be published.
+
+  ![Final report](../screenshots/4/Report.png)
+
+
+> [!TIP]
+> Remember to save and publish your report, making it accessible to stakeholders for review and decision-making.
+
 
 ---
 
-# Task 3.5 Sharing a Notebook for Collaboration
 
-Learn how to share a notebook with team members within your workspace, allowing for collaboration with specified permissions.
+# Task 3.3 Publish and Share the Power BI Report
 
-1. **Open the Notebook**:
-   - Navigate to the notebook that you wish to share.
-   - Click on the **Share** button located on the notebook toolbar.
-     ![Share Button](https://github.com/ekote/Build-Your-First-End-to-End-Lakehouse-Solution/assets/63069887/496e0f19-3d63-4e6f-9698-1adcbdf2f052)
+In this task, you will publish the Power BI report created in the previous task to your Power BI workspace and share it with other users within your organization.
 
-2. **Set Permissions**:
-   - In the sharing settings, select the category of **people who can view this notebook**.
-   - Assign appropriate permissions by selecting from **Share**, **Edit**, or **Run**. This will determine what recipients can do with the notebook.
-     ![Set Permissions](https://github.com/ekote/Build-Your-First-End-to-End-Lakehouse-Solution/assets/63069887/f6674e9e-791e-4f7b-84b6-43b2140e0e6d)
+1. **Save and Name the Report**:
+   - In the Power BI report editor, navigate to the File menu and select the Save or Save As option to open the report save dialog box.
+   - Enter a name for your report, for example, *NYC Taxi Trip Analysis*.
+   - Choose a target workspace within Power BI where you want the report to be published and click Save.
+     ![Save Report](../screenshots/4/SaveReport.png)
 
-3. **Share the Notebook**:
-   - After setting the permissions, click **Apply**.
-   - You can then choose to send the notebook directly to your team members or copy the link and distribute it manually. Recipients will be able to access the notebook according to the permissions you have set.
-     ![Share Options](https://github.com/ekote/Build-Your-First-End-to-End-Lakehouse-Solution/assets/63069887/0a097d72-0a5e-4617-8920-6fd0439d8cad)
+2. **Publish the Report**:
+   - Once saved, your Power BI report will be available as an artifact in the chosen workspace, ready for sharing and consumption.
+     ![Published Report in Workspace](../screenshots/4/PublishedreportWS.png)
 
-4. **Manage Notebook Permissions**:
-   - For additional permission settings or to update access, navigate to the Workspace item list.
-   - Click **More options** next to your notebook and select **Manage permissions**. Here, you can modify who has access and what level of access they hold.
-     ![Manage Permissions](https://github.com/ekote/Build-Your-First-End-to-End-Lakehouse-Solution/assets/63069887/b37e8de8-36d8-4a4b-accb-4b67c901f26a)
+3. **Share the Report**:
+   - Open the published report from your workspace.
+   - Click on ‘Share’ from the top navigation bar to open the sharing options.
+   - In the ‘Send link’ dialog, choose whether to copy the sharing link or share it directly via Outlook, PowerPoint, and Teams to people in your organization.
+   - Set the appropriate permissions for the report. Typically, you can allow recipients to view and interact with the report without granting editing permissions.
 
 
-> [!NOTE]
-> Be mindful of the data and information contained in the notebook when sharing, ensuring that only the appropriate parties receive access. Review your organization’s policies on data sharing and collaboration to comply with security and privacy standards. Document any issues or challenges encountered during the sharing process for future reference or to seek assistance.
+> [!TIP]
+> Ensure that the report is correctly formatted and contains all relevant insights before sharing. Also, be mindful of data privacy and security when sharing reports, especially if they contain sensitive information. Review the [Sharing and Collaboration](https://learn.microsoft.com/en-us/power-bi/collaborate-share/service-share-dashboards) guide from Microsoft for more details on sharing options and best practices. This task will help you understand how to effectively disseminate information and insights gained from your data analysis within your organization.
 
 ---
-
 
 > [!IMPORTANT]
 > Once completed, go to [next exercise (Exercise 4)](./../exercise-4/exercise-4.md). If time permits before the next exercise begins, consider continuing with [extra steps](../exercise-extra/extra.md).

@@ -1,146 +1,309 @@
-# Exercise 4 - Serve and consume data using Power BI and Data Science 
+# Exercise 4 - Latest Fabric Features
 
 > [!NOTE]
-> Timebox: 60 minutes
+> Timebox: 40 minutes
 > 
-> [Back to Agenda](./../README.md#agenda) | [Back to Exercise 3](./../exercise-3/exercise-3.md) | [Up next Exercise 5](./../exercise-5/exercise-5.md)
+> [Back to Agenda](./../README.md#agenda) | [Back to Exercise 3](./../exercise-4/exercise-3.md) | [Up next extra exercises](../exercise-extra/extra.md)
 > #### List of exercises:
-> * [Task 4.1 Predict Trip Duration Using Data Science in Fabric Lakehouse](#task-41-predict-trip-duration-using-data-science-in-fabric-lakehouse)
-> * [Task 4.2 Explore and Visualize Taxi Trip Data Using Power BI and Direct Lake](#task-42-explore-and-visualize-taxi-trip-data-using-power-bi-and-direct-lake)
-> * [Task 4.3 Publish and Share the Power BI Report](#task-43-publish-and-share-the-power-bi-report)
-
-# Context
-
-The data in your lakehouse tables is included in a dataset that defines a relational model for your data. You can edit this dataset, defining custom measures, hierarchies, aggregations, and other elements of a data model. You can then use the dataset as the source for a Power BI report that enables you to visualize and analyze the data.
-
-You can leverage the **DirectLake** feature to create Power BI datasets directly on top of your data stored in the Lakehouse. DirectLake enhances query performance when dealing with large data volumes and seamlessly integrates with Lakehouse workloads that read and write Parquet files. By combining the data visualization capabilities of Power BI with the centralized storage and tabular schema of a data lakehouse, you can implement an end-to-end analytics solution on a single platform.
-
-**Fabric enables you to visualize** the results of a single query or your entire data warehouse, **without leaving the data warehouse experience**. Exploring data while you work to ensure you have all the necessary data and transformations for your analysis is particularly useful.
-
-Use the **Visualize button** to create a new Power BI report from the results of your query. Creating a new report with the results of your query will open a Power BI window.
-
-You can also use the **New report button** to create a new Power BI report from the contents of your entire data warehouse. Using the New report button opens the Power BI service experience where you can build and save your report for use by the business.
-
----
-
-# DirectLake vs DirectQuery in Power BI
-
-Power BI is natively integrated in the whole Fabric experience. This native integration brings a unique mode, called DirectLake, of accessing the data from the lakehouse to provide the most performant query and reporting experience. DirectLake mode is a groundbreaking new engine capability to analyze very large datasets in Power BI. The technology is based on the idea of loading parquet-formatted files directly from a data lake without having to query a data warehouse or lakehouse endpoint, and without having to import or duplicate data into a Power BI dataset. DirectLake is a fast path to load the data from the data lake straight into the Power BI engine, ready for analysis.
-
-![Direct Lake Super Power](https://microsoft.github.io/fabricnotes/images/notes/14-direct-lake.png)
-
-In traditional DirectQuery mode, the Power BI engine queries the data directly from the data source every time it's queried and hence query performance depends on the speed data can be retrieved from the data source. This method avoids having to copy the data; any changes at the source are immediately reflected in the query results while in the import mode. And yet performance is better because the data is readily available in memory without having to query the data source each time. However, the Power BI engine must first copy the data into the dataset at refresh time. Any changes at the source are only picked up during the next data refresh.
-
-DirectLake mode now eliminates this import requirement by loading the data files directly into memory. Because there's no explicit import process, it's possible to pick up any changes at the source as they occur, thus combining the advantages of DirectQuery and import mode while avoiding their disadvantages. DirectLake mode is therefore the ideal choice for analyzing very large datasets and datasets with frequent updates at the source.
-
----
-
-# Task 4.1 Predict Trip Duration Using Data Science in Fabric Lakehouse
-
-In this exercise, you will take on the role of a data scientist tasked with exploring, cleaning, and transforming a dataset containing taxi trip data. You will build a machine learning model to predict the duration of taxi trips using the New York taxi greencab dataset containing data from 2015, which includes information like pickup and drop-off times, locations, fares, and passenger counts. You will then apply the machine learning model to generate predictions on greencab from the year 2023 asnd save them to lakehouse.
-
-1. **Download the Exercise Notebook**:
-   - Download the provided Jupyter notebook, [Exercise 4 - Consume Data using Data Science](Exercise%204%20-%20Consume%20Data%20using%20Data%20Science.ipynb), to your local computer. This notebook contains the steps you will follow to complete the task. [This screenshot presents the steps to do it](../screenshots/extra/download-notebook-2.jpg).
-
-2. **Import the Notebook into Fabric Workspace**:
-   - Navigate to your Fabric workspace, either in the Data Engineering or Data Science section.
-   - Import the downloaded notebook by following the instructions provided in [Exercise 2 - Importing Notebooks](../exercise-2/exercise-2.md#1-importing-the-notebook). This involves selecting the option to import existing notebooks and choosing the downloaded .ipynb file from your local computer.
-
-3. **Follow Notebook Instructions**:
-   - Once the notebook is imported into your Fabric workspace, open it.
-   - Follow the detailed steps outlined within the notebook. These will guide you through:
-     - Data exploration and cleaning: Understand the dataset's structure, clean any inconsistencies, and prepare the data for modeling.
-     - Feature engineering: Create new features from the existing data to help improve the predictive power of your machine learning model.
-     - Model training: Select and train a machine learning model using the prepared dataset.
-     - Evaluation: Assess the performance of your model based on standard metrics.
-
-4. **Complete the Exercise**:
-   - Work through each step in the notebook, executing code cells and noting any insights or observations.
-   - Make sure to save your progress as you work through the notebook.
-
----
-
-# Task 4.2 Explore and Visualize Taxi Trip Data Using Power BI and Direct Lake
-
-In this exercise, you will explore and visualize taxi trip data, including the predicted trip durations from the machine learning model you developed in Task 4.1. You will use Microsoft Fabric's Direct Lake feature for direct connectivity and create a Power BI report to analyze the data.
-
-### Steps to Follow
-
-1. **Access the Lakehouse Artifact**:
-   - Navigate to the "goldcurated" lakehouse artifact within your workspace, used in previous exercises.
-   - Open the lakehouse UI to begin working with the data.
-
-2. **Create a New Semantic Model**:
-   - Click the "New semantic model" button on the top ribbon.
-   - In the dialog, name the semantic model (e.g., NYCTaxiTrips) and select **greentaxi_predicted** as the data source. Confirm to create the semantic model linked to your predictive data.
-     ![New Semantic Model](../screenshots/4/NewSemanticModel.png)
-
-3. **Generate a New Power BI Report**:
-   - In the semantic model UI, click the ***New report*** button on the top ribbon. This will open the Power BI report authoring page in a new browser tab.
-   
-     ![New Report from Semantic Model](../screenshots/4/NewReportfromSemanticModel.png)
+> *  [Stay Updated and Bookmark Essentials](#stay-updated-and-bookmark-essentials)
+> *  [Fabric Runtimes and Python User-defined Table Functions (UDTFs)](#fabric-runtimes-and-python-user-defined-table-functions-udtfs)
+> *  [Managed Private Endpoints](#managed-private-endpoints)
+> *  [Autotune Query Tuning](#autotune-query-tuning)
+> *  [Spark vs Pandas](#spark-vs-pandas)
+> *  [Data Wrangler is my friend](#data-wrangler-is-my-friend)
+> *  [VSCode (WEB)](#vscode-web)
 
 
-> [!IMPORTANT]  
-> You can now create various visuals as per your requirement to generate insights from the prediction dataset or follow the steps outlined below.
-
-#### Sample Visuals to analyze predictedTripDuration.
-
-1. Create a Slicer visualization for pickupDate.
-    - Select the slicer option from the visualizations pane and select ***pickupDate*** from the data pane and drop it on the created slicer visualization field of the date slider visual.
-
-2. Visualize Average tripDuration and predictedTripDuration by timeBins using a clustered column chart.
-    - Add a clustered column chart, add ***timeBins*** to X-axis, ***trip_duration*** and ***predictedtrip_duration* **to Y-axis and change the aggregation method to Average.
-
-3. Visualize Average tripDuration and predictedTripDuration by weekDayName.
-    - Add an area chart visual and add ***weekDayName* **onto X-axis, ***trip_duration*** to Y-axis and ***predictedTripDuration*** to secondary Y-axis. Switch aggregation method to Average for both Y-axes.
-
-4. Visualize Average tripDuration and predictedTripDuration by pickupDate using line chart.
-    - Add a line chart visual and add ***pickupDate*** onto X-axis, ***tripDuration*** and ***predictedTripDuration*** to Y-axis and switch aggregation method to Average for both fields.
-
-5. Create Card Visuals for single view of key metrics.
-   - Add a Card visual and drag ***tip_amount*** to fields and switch aggregation method to median.
-   - Add 2nd Card visual and drag ***fare_amount*** to fields and switch aggregation method to average.
-   - Add 3rd Card visual and drag ***predictedtrip_duration*** to fields and switch aggregation method to average. 
-   - Add 4th Card visual and drag ***trip_duration*** to fields and switch aggregation method to average.
-
-  You can now rearrange the layout and modify the aesthetics of the visuals as per your requirement and the report is ready to be published.
-
-  ![Final report](../screenshots/4/Report.png)
-
-
-> [!TIP]
-> Remember to save and publish your report, making it accessible to stakeholders for review and decision-making.
-
-
----
-
-
-# Task 4.3 Publish and Share the Power BI Report
-
-In this task, you will publish the Power BI report created in the previous task to your Power BI workspace and share it with other users within your organization.
-
-1. **Save and Name the Report**:
-   - In the Power BI report editor, navigate to the File menu and select the Save or Save As option to open the report save dialog box.
-   - Enter a name for your report, for example, *NYC Taxi Trip Analysis*.
-   - Choose a target workspace within Power BI where you want the report to be published and click Save.
-     ![Save Report](../screenshots/4/SaveReport.png)
-
-2. **Publish the Report**:
-   - Once saved, your Power BI report will be available as an artifact in the chosen workspace, ready for sharing and consumption.
-     ![Published Report in Workspace](../screenshots/4/PublishedreportWS.png)
-
-3. **Share the Report**:
-   - Open the published report from your workspace.
-   - Click on ‘Share’ from the top navigation bar to open the sharing options.
-   - In the ‘Send link’ dialog, choose whether to copy the sharing link or share it directly via Outlook, PowerPoint, and Teams to people in your organization.
-   - Set the appropriate permissions for the report. Typically, you can allow recipients to view and interact with the report without granting editing permissions.
-
-
-> [!TIP]
-> Ensure that the report is correctly formatted and contains all relevant insights before sharing. Also, be mindful of data privacy and security when sharing reports, especially if they contain sensitive information. Review the [Sharing and Collaboration](https://learn.microsoft.com/en-us/power-bi/collaborate-share/service-share-dashboards) guide from Microsoft for more details on sharing options and best practices. This task will help you understand how to effectively disseminate information and insights gained from your data analysis within your organization.
-
----
+# Stay Updated and Bookmark Essentials
+Dive into the latest and greatest from Fabric
+* **Monthly Digests**: Don't miss out! Head over to the [Fabric Monthly Updates](https://blog.fabric.microsoft.com/en-us/blog/category/monthly-update) and catch up on the past three months' worth of updates. Discover the latest features and improvements rolled out each week, compiled neatly for your convenience. Bookmark this page to keep your knowledge fresh and up-to-date.
+* **Latest Announcements**: Stay in the loop with the most recent news on [Fabric's Blog](https://blog.fabric.microsoft.com/en-US/blog). Here, major updates, like the management of private endpoint capabilities, are discussed in detail. It's a treasure trove of insights and announcements you won't want to miss.
+* **Pin the Visualizations**: Show some love for the internal Microsoft team's creative endeavor at [Fabric Notes](https://microsoft.github.io/fabricnotes/). They've brilliantly visualized common concepts in Fabric, earning well-deserved kudos. Pin this website for a blend of inspiration and innovation.
+* **Voice Your Ideas**: At Fabric, your voice matters. If there's something you'd like to see improved or introduced, express your ideas on [Fabric Ideas](https://ideas.fabric.microsoft.com/). Tailor your suggestions to specific workloads for clarity. We're all ears and ready to adapt our semester plans to meet your needs. This shift from reactive to proactive engagement empowers you to influence Fabric's future direction. An outstanding instance of this is the introduction of experimental runtimes following your feedback. So, why wait? Share your thoughts and be a part of shaping Fabric's evolution.
 
 > [!IMPORTANT]
-> Once completed, go to [next exercise (Exercise 5)](./../exercise-5/exercise-5.md). If time permits before the next exercise begins, consider continuing with [extra steps](../exercise-extra/extra.md).
+> This is also a great opportunity to remind you to always use the latest GA runtime version. Experiment with the Preview version, but for production-level workloads, use the GA version. Additionally, we will soon publish the lifecycle for runtimes. We aim to introduce a new release every six months, and a natural consequence for Spark is that we will have to run deprecation cycles for outdated, unsupported runtimes. Migrate your production workloads before the deprecation date because once the runtime is deprecated, there will be no way to create new pools, and your jobs will be disabled within 90 days following the deprecation.
+
+---
+
+# Fabric Runtimes and Python User-defined Table Functions (UDTFs)
+
+## Understanding Apache Spark Runtimes in Fabric
+Fabric Runtime, an Azure-integrated platform, is built on Apache Spark, facilitating large-scale data engineering and data science tasks. It amalgamates significant components from both proprietary and open-source domains to deliver an extensive data processing environment. Here, we refer to it as Fabric Runtime for simplicity.
+
+Essential Components of Fabric Runtime:
+
+- **Apache Spark**: A robust distributed computing system providing a comprehensive platform for large-scale data processing.
+- **Delta Lake**: Adds ACID transactions and reliability features to Apache Spark within Fabric Runtime, enhancing data integrity.
+- **Programming Language Packages**: Supports Java/Scala, Python, and R out-of-the-box for versatile development experiences.
+- Based on a **solid open-source foundation**, ensuring broad compatibility and performance.
+
+Refer to the following table for a detailed comparison of Apache Spark versions and supported configurations across different runtime versions:
+
+| Feature              | Runtime 1.1 | Runtime 1.2 | Runtime 1.3 |
+|----------------------|-----------------------------|--------------------------------|-------------------------------|
+| **Apache Spark**     | 3.3.1                       | 3.4.1                          | 3.5.0                         |
+| **Operating System** | Ubuntu 18.04                | Mariner 2.0                    | Mariner 2.0                   |
+| **Java**             | 8                           | 11                             | 11                            |
+| **Scala**            | 2.12.15                     | 2.12.17                        | 2.12.17                       |
+| **Python**           | 3.10                        | 3.10                           | 3.10                          |
+| **Delta Lake**       | 2.2.0                       | 2.4.0                          | 3.0.0                         |
+| **R**                | 4.2.2                       | 4.2.2                          | N/A                           |
+
+> [!TIP] 
+> Explore the latest runtime version [Runtime 1.3 Details](https://learn.microsoft.com/en-us/fabric/data-engineering/runtime-1-3). Fabric Runtime 1.3, an experimental stage release, offers early access to new features and Apache Spark APIs, including the LTS version Spark 3.5.
+
+The objective of this task is to dive into the newer runtime version, specifically to explore and utilize Python User-defined Table Functions (UDTFs) introduced in Spark 3.5. UDTFs are powerful for transforming data, particularly for expanding one row into multiple rows. Learn more about Python UDTFs [here](https://spark.apache.org/docs/latest/api/python/user_guide/sql/python_udtf.html).
+
+## 1. Integrating Experimental Public Preview Runtime 1.3
+
+Switch to the experimental Runtime version 1.3 to utilize new features:
+
+1. Navigate to the 'Workspace settings' within your Fabric workspace.
+2. Access the 'Data Engineering/Science' tab and select 'Spark Settings'.
+3. In the 'Environment' section, choose 'Runtime Versions', select '1.3 Experimental (Spark 3.5, Delta 3 OSS)', and confirm your changes. This sets Runtime 1.3 as your default.
+
+![Steps](https://learn.microsoft.com/en-us/fabric/data-engineering/media/mrs/runtime13.png#lightbox)
+
+## 2. Initiating a New Notebook
+Create and configure a new notebook:
+
+1. Start a new notebook session in your workspace.
+2. Note that Spark 3.5 sessions may take 2-5 minutes to initiate due to the absence of starter pools in the early experimental phase.
+3. Verify the Spark version by executing `sc.version` in your notebook to confirm Spark 3.5 is active.
+
+## 3. Exploring UDTFs with Fabric
+Explore the unique capabilities of UDTFs for comprehensive data transformations:
+1. Consider the real-world scenario of taxi fares, where the final cost encompasses various elements beyond the base fare, such as taxes, tips, and additional charges.
+2. Utilize UDTFs to calculate and apply these additional costs in one operation, enhancing data analysis and insight extraction from your datasets.
+3. Apply the provided example code to a specific table from either your bronze or silver lakehouse data, focusing on the 'fare_amount' column.
+4. Perform the transformations and observe the outcome on a subset of the data, applying a 5% discount as an example.
+
+![Step](../screenshots/5/1.jpg)
+
+<details>
+
+<summary>Click <ins>here</ins> to expand the details and check the answer.</summary>
+
+```python
+from pyspark.sql.functions import udtf
+from pyspark.sql.types import Row
+
+# Python User-defined Table Functions (UDTF) for calculating all the micro and hidden costs of driving taxi (per each fare)
+@udtf(returnType="fare_amount: float, tip:float, sales_tax:float, climate_tax: float, final_total: float")
+class TaxiFareUDTF:
+    def eval(self, row: Row, discount_percentage: float):
+        return_row = Row(
+            # Calculate the tip based on the net amount, 20% is the tip required, welcome to WA state!
+            tip=row["fare_amount"] * 0.20,
+            # Calculate taxes
+            sales_tax=row["fare_amount"] * 0.08, # 8% sales tax
+            climate_tax=row["fare_amount"] * 0.03, # 3% climate tax
+            # Calculate the final total amount
+            final_total=row["fare_amount"] + (row["fare_amount"] * 0.20) + (row["fare_amount"] * 0.08) + (row["fare_amount"] * 0.03) - (discount_percentage/100 * row["fare_amount"])
+            )
+        yield row["fare_amount"], return_row["tip"], return_row["sales_tax"], return_row["climate_tax"], return_row["final_total"]
+
+
+# Python UDTFs can also be registered and used in SQL queries.        
+spark.udtf.register("calculate_individual_costs", TaxiFareUDTF)
+
+# Python UDTFs can also take a TABLE as input argument, and it can be used in conjunction with scalar input arguments. By default, you are allowed to have only one TABLE argument as input, primarily for performance reasons. If you need to have more than one TABLE input argument, you can enable this by setting the spark.sql.tvf.allowMultipleTableArguments.enabled configuration to true.
+spark.sql("SELECT * FROM calculate_individual_costs(TABLE(SELECT fare_amount FROM bronzerawdata.<figure out the table name :) > LIMIT 20), 5)").show()
+```
+
+</details>
+
+Each new Runtime version introduces an expanded API, new methods, and transformations, enhancing the efficiency and capabilities of data processing. Moreover, the latest GA runtime versions typically outperform their predecessors due to continuous improvements by both the open-source community and the Microsoft product groups.
+
+Now, apply this knowledge to calculate comprehensive costs beyond the example. 
+
+---
+
+# Managed Private Endpoints
+
+Managed virtual networks are virtual networks that are created and managed by Microsoft Fabric for each Fabric workspace. Managed virtual networks provide network isolation for Fabric Spark workloads, meaning that the compute clusters are deployed in a dedicated network and are no longer part of the shared virtual network. Managed virtual networks also enable network security features such as managed private endpoints, and private link support for Data Engineering and Data Science items in Microsoft Fabric that use Apache Spark.
+
+> [!IMPORTANT]
+> Managed private endpoints (and Workspace identities) are only available for workspaces assigned to Fabric capacities with SKU's F64 or larger. 
+
+![MPE-OVERVIEW](https://learn.microsoft.com/en-us/fabric/security/media/security-managed-vnets-fabric-overview/managed-vnets-overview.gif)
+
+Managed private endpoints are added to a workspace. Workspace admins can create and delete managed private endpoint connections from the workspace settings of a Fabric Workspace.
+
+![demo-mpe](https://learn.microsoft.com/en-us/fabric/security/media/security-managed-vnets-fabric-overview/creating-private-endpoint-animation.gif)
+
+Managed private endpoints are connections that workspace admins can create to access data sources that are behind a firewall or that are blocked from accessing from the public internet. Managed private endpoints allow Fabric Spark workloads to securely access data sources without exposing them to the public network or requiring complex network configurations. The private endpoints provide a secure way to connect and access the data from these data sources using items such as notebooks and Spark job definitions.
+
+Microsoft Fabric creates and manages managed private endpoints based on the inputs from the workspace admin. Workspace admins can set up managed private endpoints from the workspace settings by specifying the resource ID of the data source, identifying the target subresource, and providing a justification for the private endpoint request. Managed private endpoints support various data sources, such as Azure Storage, Azure SQL Database and many more.
+
+Follow the GIF which presents e2e demo on how to create manage private endpoint.
+
+![mpe](../screenshots/5/managed_private_endpoint_velocity.gif)
+
+
+> [!NOTE]
+> The MPE must be approved on the target resource. 
+
+Taking SQL server as an example, users can navigate to the Azure portal and search for the "SQL Server" resource.
+
+1. On the Resource page, select **Networking** from the navigation menu and then select the **Private Access** tab.
+
+   ![Screenshot showing the Private access tab on the Networking page of a resource in the Azure portal](https://learn.microsoft.com/en-us/fabric/security/media/security-managed-private-endpoints-create/networking-private-access-tab.png)
+
+1. Data source administrators should be able to view the active private endpoint connections and new connection requests.
+
+    ![Screenshot showing pending requests on the Private access tab](https://learn.microsoft.com/en-us/fabric/security/media/security-managed-private-endpoints-create/new-connection-requests.png)
+
+1. Admins can either *Approve* or *Reject* by providing a business justification.
+
+    ![Screenshot showing the approval form.](https://learn.microsoft.com/en-us/fabric/security/media/security-managed-private-endpoints-create/approve-reject-request.png)
+
+1. Once the request has been approved or rejected by the data source admin, the status is updated in the Fabric workspace settings page upon refresh.
+
+    ![Screenshot showing the managed private endpoint in the approved state.](https://learn.microsoft.com/en-us/fabric/security/media/security-managed-private-endpoints-create/endpoint-request-approved-state.png)
+
+1. When the status has changed to *approved*, the endpoint can be used in notebooks or Spark job definitions to access the data stored in the data source from Fabric workspace.
+
+Click [here](https://learn.microsoft.com/en-us/fabric/security/security-managed-private-endpoints-create#supported-data-sources) to review the list of supported data sources.
+
+
+---
+
+# Autotune Query Tuning
+When discussing Spark runtimes, we inevitably address the crucial topic of performance, which concerns us all. In response to this, we have developed 'Autotune', a feature designed to optimize Spark settings for your jobs, enhancing efficiency and effectiveness.
+
+This week marks the transition of Autotune to public review, accessible across all regions. This presents you with a unique opportunity to view a demonstration that has yet to be released to the public. Below, you will find a link to this exclusive demo.
+
+Please look out for further announcements regarding Autotune throughout the week. We are excited to share more information about this innovative feature with you.
+
+* [Watch the exclusive demo](https://1drv.ms/v/s!ApCaji7rcQaQ3rNv8g7pBnLdrwQBfQ?e=R7GiEq) that has not been yet released.
+
+* For more information on Autotune, please review the documentation available at [Autotune in Fabric Data Engineering](https://learn.microsoft.com/en-us/fabric/data-engineering/autotune?tabs=sparksql).
+
+> [!TIP]
+> Autotune query tuning examines individual queries and builds a distinct ML model for each query. It specifically targets:
+> - Repetitive queries
+> - Long-running queries (those with more than 15 seconds of execution)
+> - Spark SQL queries (excluding those written in the RDD API, which are very rare)
+>
+> This feature is compatible with notebooks, Spark Job Definitions, and pipelines.
+
+---
+
+# Spark vs Pandas
+Your mission, in that task, involves guiding new team members through the labyrinth of big data processing, particularly in leveraging Apache Spark over Pandas for substantial datasets. This advice is pivotal not only within the Fabric ecosystem but universally in the big data domain.
+
+## Understanding Pandas
+Pandas shines due to its simplicity and intuitive design, making it a favorite among data engineers, scientists, and analysts. However, its primary limitation lies in its inability to natively harness parallel architectures and computations. Pandas operates within the confines of single-node, in-memory computations, restricting its scalability and efficiency in processing vast datasets typical in big data scenarios.
+
+## Transition to Spark and its core concepts
+Apache Spark transcends these limitations by adopting a distributed computing approach. Key distinctions include:
+- **Spark DataFrames**: These are distributed across clusters, enabling parallel data processing far beyond the capacities of a single machine.
+- **Lazy Evaluation**: Spark employs lazy evaluation for DataFrames, constructing a Directed Acyclic Graph (DAG) of transformations that are optimized and executed only when an action is required, enhancing overall execution efficiency.
+- **Advanced Optimizations**: Features like Adaptive Query Execution (AQE) and Dynamic Partition Pruning (DPP) automatically optimize query plans and data partitioning, respectively, something far beyond the reach of Pandas.
+
+## General rule of thumb
+- Utilize Pandas for datasets that comfortably fit into the memory of a single machine and when the data processing doesn't demand extensive parallelization.
+- Opt for Spark when dealing with massive datasets that exceed single machine capacity, or when tasks benefit significantly from parallelization, despite any existing familiarity with Pandas due to Spark's scalability and optimization features.
+
+## Bridging the gap with Koalas
+Introduced in Spark 3.2, Koalas marries the simplicity of the Pandas API with Spark’s distributed computing prowess. By importing `pandas` API through PySpark:
+
+```python
+from pyspark import pandas as pd
+```
+
+This integration enables data practitioners to apply familiar Pandas-like operations while leveraging Spark's distributed architecture, achieving the best of both worlds.
+
+## Practical application in Fabric:
+In Fabric, data loading practices vary between Pandas and Spark. Below is an example demonstrating how to load a CSV file into both frameworks. This comparison not only highlights syntax differences but also emphasizes when to employ each framework based on dataset size and computational needs.
+
+Chech [How to read and write data with Pandas in Microsoft Fabric](https://learn.microsoft.com/en-us/fabric/data-science/read-write-pandas).
+
+---
+
+# Data Wrangler is my friend
+Immerse yourself in the world of efficient data analysis with Fabric's Data Wrangler. This task is designed to help you leverage Data Wrangler's capabilities to explore and transform Pandas DataFrames effectively. Data Wrangler blends a user-friendly grid-like interface with dynamic data analysis tools, making exploratory data analysis both intuitive and robust.
+
+Dive deep into the functionalities of Data Wrangler within Fabric, focusing specifically on Pandas DataFrames. Your task will be segmented into actionable steps, guiding you through the process of data exploration, visualization, and transformation within this powerful tool.
+
+
+## Initial Setup
+Open your Fabric environment and navigate to the Data Wrangler tool within your notebook.
+Load a Pandas DataFrame that you wish to analyze. If you don't have a specific dataset in mind, utilize a sample dataset provided within the platform.
+
+![Step](../screenshots/5/dw.jpg)
+![Step](../screenshots/5/dw1.jpg)
+![Step](../screenshots/5/dw2.jpg)
+![Step](../screenshots/5/dw3.jpg)
+
+## Exploratory Data Analysis
+
+Utilize the grid-like data display to review your dataset. Pay attention to the distribution of data, missing values, and data types.
+Generate dynamic summary statistics to gain quick insights into the mean, median, mode, min, and max of your data columns.
+Leverage built-in visualizations to understand data distributions, correlations, and outliers. Experiment with different chart types to best represent your data.
+
+![Step](../screenshots/5/dw4.jpg)
+![Step](../screenshots/5/dw5.jpg)
+![Step](../screenshots/5/dw6.jpg)
+
+## Data Cleaning Operations
+
+Identify any inconsistencies, missing values, or outliers within your dataset.
+Apply common data-cleaning operations available in Data Wrangler, such as filling missing values, filtering rows, or correcting data types. Observe how each operation updates the data display in real time.
+Evaluate the impact of your data transformations on the summary statistics and visualizations to ensure they align with your analysis goals.
+
+## Code Generation and Reusability
+
+As you apply transformations within Data Wrangler, observe the automatic generation of corresponding code in either Pandas or PySpark.
+Save the generated code back to your notebook as a reusable function. This practice not only enhances your understanding of data transformations but also builds a library of custom functions for future analysis.
+
+![Step](../screenshots/5/dw7.jpg)
+
+## To learn more, I encourage you to watch the Fabric Espresso episode about Data Wrangler.
+[![FabricEspresso](https://img.youtube.com/vi/-g6KveKQXu4/0.jpg)](https://www.youtube.com/watch?v=-g6KveKQXu4)
+
+
+---
+
+# VSCode (WEB)
+
+Visual Studio Code for the Web provides a free, zero-install Microsoft Visual Studio Code experience running entirely in your browser, allowing you to quickly and safely browse source code repositories and make lightweight code changes. 
+
+## Install the Synapse VS Code extension for the Web
+
+1. Go to https://insider.vscode.dev from your browser.
+1. Select the **Extensions** icon in the left navigation bar.
+1. Search for **Synapse** and select the **Synapse VS Code - Remotes** extension
+1. click **Install**.
+
+![VSCODE](../screenshots/5/vs1.jpg)
+
+
+## Open a notebook (e.g., notebook-2) with the Synapse VS Code extension for the Web
+
+You can open a notebook in the VS Code for the Web experience by clicking the **Open in VS Code(Web)** button on the notebook authoring page in the Fabric portal. After you select the button, a separate browser tab is opened with the VS Code for the web experience. If you haven't already installed the extension, it is automatically installed, and activated, and the notebook is opened.
+![VSCODE](../screenshots/5/vs2.jpg)
+![VSCODE](../screenshots/5/vs3.jpg)
+![VSCODE](../screenshots/5/vs4.jpg)
+
+
+## Run notebooks in the VS Code for the Web experience
+
+You can run a notebook in the VS Code for the web experience by selecting the **Run** button in the notebook editor. Before you run the notebook, make sure to select the **Synapse VS Code -Remote** as the kernel. The kernel is selected in the top right corner of the notebook editor.
+
+![VSCODE](../screenshots/5/vs5.jpg)
+
+![VSCODE](../screenshots/5/vs6.jpg)
+
+
+## To learn more, I encourage you to watch the Fabric Espresso episode about VSCode.
+
+[![FabricEspresso](https://img.youtube.com/vi/A9SjAyZ_JSc/0.jpg)](https://www.youtube.com/watch?v=A9SjAyZ_JSc)
+
+
+
+---
+> [!IMPORTANT]
+> Once completed, go to [Agenda](./../README.md#agenda). If time permits before the next exercise begins, consider continuing with [extra steps](../exercise-extra/extra.md).
