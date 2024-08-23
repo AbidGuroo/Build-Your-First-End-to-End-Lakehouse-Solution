@@ -1,4 +1,4 @@
-# Exercise 3 - Serve and consume data using Power BI and Data Science 
+# Exercise 3 - Generate and Serve Insights using Data Science and Power BI 
 
 > [!NOTE]
 > Timebox: 60 minutes
@@ -10,6 +10,8 @@
 > * [Task 3.3 Publish and Share the Power BI Report](#task-43-publish-and-share-the-power-bi-report)
 
 # Context
+
+Microsoft Fabric provides Data Science experiences that enable users to perform comprehensive data science workflows. These workflows cover the entire data science process, from data exploration and preparation to experimentation, modeling, model scoring, and serving predictive insights in Power BI Reports.
 
 The data in your lakehouse tables is included in a dataset that defines a relational model for your data. You can edit this dataset, defining custom measures, hierarchies, aggregations, and other elements of a data model. You can then use the dataset as the source for a Power BI report that enables you to visualize and analyze the data.
 
@@ -40,7 +42,7 @@ DirectLake mode now eliminates this import requirement by loading the data files
 In this exercise, you will take on the role of a data scientist tasked with exploring, cleaning, and transforming a dataset containing taxi trip data. You will build a machine learning model to predict the duration of taxi trips using the New York taxi greencab dataset containing data from 2015, which includes information like pickup and drop-off times, locations, fares, and passenger counts. You will then apply the machine learning model to generate predictions on greencab from the year 2023 asnd save them to lakehouse.
 
 1. **Download the Exercise Notebook**:
-   - Download the provided Jupyter notebook, [Exercise 3 - Consume Data using Data Science](Exercise%203%20-%20Consume%20Data%20using%20Data%20Science.ipynb), to your local computer. This notebook contains the steps you will follow to complete the task. [This screenshot presents the steps to do it](../screenshots/extra/download-notebook-2.jpg).
+   - Download the provided Jupyter notebook, [Exercise 3 - Generate Insights using Data Science](Exercise%203%20-%20Generate%20Insights%20using%20Data%20Science.ipynb), to your local computer. This notebook contains the steps you will follow to complete the task. [This screenshot presents the steps to do it](../screenshots/extra/download-notebook-2.jpg).
 
 2. **Import the Notebook into Fabric Workspace**:
    - Navigate to your Fabric workspace, either in the Data Engineering or Data Science section.

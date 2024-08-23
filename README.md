@@ -38,7 +38,7 @@ Join the workshop to master building end-to-end data solutions with Microsoft Fa
 > 
 > 11:45 am - 12:45 pm - Lunch 60 minutes
 > 
-> 12:45 pm - 01:15 pm - [Exercise 3 - Serve and consume data using Data Science and Power BI](./exercise-3/exercise-3.md)
+> 12:45 pm - 01:15 pm - [Exercise 3 - Generate and Serve Insights using Data Science and Power BI](./exercise-3/exercise-3.md)
 > 
 > 01:15 pm - 01:25 pm - Break 10 minutes
 > 
