@@ -272,7 +272,7 @@ There are multiple source options available for accessing data directly without 
 Provide the necessary URL by copying and pasting it from the task description. Then, choose your connection, retaining the automatically generated name if possible. For authentication, select `SAS token`, paste the provided token, and then click `Next` after filling in all details.
 
 * Blob Storage Account URL `https://transportation23kotcorp.dfs.core.windows.net/`
-* SAS Token (Read Only) `sv=2022-11-02&ss=bfqt&srt=sco&sp=rlpitf&se=2025-01-01T06:25:40Z&st=2024-08-26T21:25:40Z&spr=https&sig=zphlX3YvT3BLTyS4tnWNBtsArqQbHdP%2B2t8R0Tu%2BMvM%3D`
+* SAS Token (Read Only) `sv=2022-11-02&ss=bfqt&srt=sco&sp=rwlacpx&se=2025-01-01T07:11:02Z&st=2024-09-11T22:11:02Z&spr=https&sig=u%2BX878QKr3p5NZnK%2BU4l7iXbzJiMsY9lpLbj%2BzeRix8%3D`
 
 ![Step](../screenshots/1/36.jpg)
 
