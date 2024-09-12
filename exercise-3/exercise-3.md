@@ -11,7 +11,10 @@
 
 # Context
 
-Microsoft Fabric provides Data Science experiences that enable users to perform comprehensive data science workflows. These workflows cover the entire data science process, from data exploration and preparation to experimentation, modeling, model scoring, and serving predictive insights in Power BI Reports.
+Microsoft Fabric provides Data Science experiences that enable users to perform comprehensive data science workflows. These workflows cover the entire data science process, from data exploration and preparation to experimentation, modeling, model scoring, and serving predictive insights in Power BI Reports. In Fabric each step of the Data Science process is powered by both native built features like Data Wrangler, NotebookUtils, MLFlow, SynapseML, Copilot, PowerBI etc. in addition to numerous open-source libraries enabling a Data Scientist to built a machine learning solution. The below diagram outlines an end-to-end Data Science process and the Fabric features relevant to the process.
+
+![End-to-End Data Science](../screenshots/4/EndtoEndDataScience.png)
+
 
 The data in your lakehouse tables is included in a dataset that defines a relational model for your data. You can edit this dataset, defining custom measures, hierarchies, aggregations, and other elements of a data model. You can then use the dataset as the source for a Power BI report that enables you to visualize and analyze the data.
 
