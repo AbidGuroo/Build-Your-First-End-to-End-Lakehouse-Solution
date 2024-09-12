@@ -100,7 +100,7 @@ Review the data preview showing the table contents from the external blob storag
 ![Step](../screenshots/1/13.jpg)
 
 ## 1.1.14. **Define Data Destination**
-Switch to the `Destination` tab, select `Storage Workspace`, then `Lakehouse` and click `New` to create a new Lakehouse. If UI is different, please select `More` under 'Connection' combobox, select `New Fabric Item` on the left tab and select `Lakehouse` at the top, make sure your workspace is selected then specify the name of the lakehouse. If you have lakehouse already created please click on OneLake data hub and select your lakehouse.
+Switch to the `Destination` tab, select `Storage Workspace`, then `Lakehouse` and click `New` to create a new Lakehouse. If UI is different, please select `More` under 'Connection' combobox, select `New Fabric Item` on the left tab and select `Lakehouse` at the top, make sure your workspace is selected then specify the name of the lakehouse. If you have lakehouse already created please click on `OneLake data hub` and select your lakehouse.
 ![Step](../screenshots/1/14.jpg)
 
 ## 1.1.15. **Name the Lakehouse**
