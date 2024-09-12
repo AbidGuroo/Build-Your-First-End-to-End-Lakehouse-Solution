@@ -53,7 +53,7 @@ With Copilot for Data Science and Data Engineering, you can chat with an AI assi
 Investigate the `green201501` table within your lakehouse, and seek insights about the dataset. Additionally, inquire how to compute the average trip distance and fare amount by each payment type.
 
 ## 2.1.1. Accessing Copilot
-Select the Copilot icon found in the notebooks ribbon. This action opens the Copilot chat panel and creates a new cell at the top of your notebook. Note: This cell is essential for initializing a Spark session within a Fabric notebook and must be executed for Copilot to function correctly. Future releases may introduce alternative initialization methods.
+Select the `Copilot` icon found in the notebooks ribbon. This action opens the Copilot chat panel. When you click on `Get started` and it creates a new cell at the top of your notebook. Note: This cell is essential for initializing a Spark session within a Fabric notebook and must be executed for Copilot to function correctly. Future releases may introduce alternative initialization methods and this step might not longer be necessary.
 ![Step](../screenshots/2/1.jpg)
 
 ## 2.1.2. Get Started with Copilot
@@ -154,7 +154,7 @@ Open Link in a New Tab [provided URL](https://raw.githubusercontent.com/ekote/Bu
 
 ## 2.3.2. Uploading Data to the Lakehouse
 To integrate this discount data with existing datasets:
-* Go to the `Files` section in your Lakehouse. 
+* Go to the `Files` section in your Lakehouse (`bronzerawdata`). 
 * Click on the three dots to access additional options and select the `Upload` button. 
 * Choose `Upload Files` from the menu.
 ![Step](../screenshots/2/10.jpg)
@@ -168,7 +168,7 @@ The file should upload within a few seconds. This method provides a straightforw
 ![Step](../screenshots/2/12.jpg)
 
 ## 2.3.5. Refreshing and Locating the File
-Refresh the Lakehouse's `Files` section to view the newly uploaded file. Employ the drag-and-drop feature to move this file into your notebook. This action will generate a cell prepopulated with code, which you can execute to review the new data.
+Refresh the Lakehouse's `Files` section to view the newly uploaded file when you are in notebook view. Employ the drag-and-drop feature to move this file into your notebook or click on `...` next to the file name and then click on `Load data > Spark`. This action will generate a cell prepopulated with code, which you can execute to review the new data.
 ![Step](../screenshots/2/13.jpg)
 
 ## 2.3.6. Renaming the Notebook
@@ -190,11 +190,11 @@ Finally, transition to the `Data Engineering` tab, adhering to the instructions 
 > You can import one or more existing notebooks from your local computer to a Fabric workspace from the Data Engineering or the Data Science homepage. Fabric notebooks recognize the standard Jupyter Notebook .ipynb files, and source files like .py, .scala, and .sql, and create new notebook items accordingly.
 
 ## 2.4.1. Importing the Notebook
-If you have not downloaded the repository ([Step 16. Download the exercise files](../exercise-0-setup/start.md#16-download-the-exercise-files)), **you can download just a separate notebook. [This screenshot presents the steps to do that.](../screenshots/extra/download-notebook.jpg)**
+If you have not downloaded the repository ([Step 16. Download the exercise files](../exercise-2/notebook-2.ipynb)), **you can download just a separate notebook. [This screenshot presents the steps to do that.](../screenshots/extra/download-notebook.jpg)**
 
-Ensure you are in the `Data Engineering` context of your Fabric workspace. Then, navigate to your workspace, and select the `New` where you'll find an option to upload notebooks, symbolized by a notebook icon. 
+Ensure you are in the `Data Engineering` context of your Fabric workspace. Then, navigate to your workspace, and select the `New` or `Import notebook` where you'll find an option to upload notebooks, symbolized by a notebook icon. 
 
-Click this icon to open the upload sidebar, similar to how you previously uploaded a file. From here, choose the notebook you've recently downloaded, named [notebook-2.ipynb](https://github.com/ekote/Build-Your-First-End-to-End-Lakehouse-Solution/blob/fabcon/exercise-2/notebook-2.ipynb), and initiate the upload.
+Click this icon to open the upload sidebar, similar to how you previously uploaded a file. From here, choose the notebook you've recently downloaded, named [notebook-2.ipynb](../exercise-2/notebook-2.ipynb), and initiate the upload.
 ![Step](../screenshots/2/importnotebook.jpg)
 
 ## 2.4.2. Notification
@@ -202,7 +202,7 @@ Once you start the upload, you'll receive a notification indicating that the imp
 ![Step](../screenshots/2/17.jpg)
 
 ## 2.4.3. Accessing the Imported Notebook
-After the import completes, locate the newly imported notebook in the `urban-innovation-de{NNN}`, where NNN represents the number assigned to you. Click on the three dots associated with the notebook and select `Open Notebook`. For convenience, you can open the notebook in the background, which will make its icon continuously accessible from the vertical sidebar on the left.
+After the import completes, locate the newly imported notebook in the `urban-innovation-de{NNN}`, where NNN represents the number assigned to you. Either double click on the name of the notebook or click on the three dots associated with the notebook and select `Open Notebook`. For convenience, you can open the notebook in the background, which will make its icon continuously accessible from the vertical sidebar on the left.
 ![Step](../screenshots/2/18.jpg)
 
 
@@ -356,10 +356,10 @@ Note that the execution of the two notebooks occurs sequentially, typically taki
 > [!TIP]
 > (1) Instead of iterating through notebooks with a ForEach loop, you may consider structuring your approach to input various values into a single notebook execution. This can be complemented by coding loops within the notebook itself. 
 > 
-> (2) Utilize the `mssparkutils.notebook.runMultiple()` method to execute multiple notebooks in parallel, enhancing efficiency and saving time. This method is particularly useful when you do not need to wait for each notebook to complete before starting another. For an introduction and detailed usage, execute `mssparkutils.notebook.help("runMultiple")`. Here’s an illustrative example: 
-> `mssparkutils.notebook.runMultiple(["NotebookA", "NotebookB"])`
+> (2) Utilize the `notebookutils.notebook.runMultiple()` method to execute multiple notebooks in parallel, enhancing efficiency and saving time. This method is particularly useful when you do not need to wait for each notebook to complete before starting another. For an introduction and detailed usage, execute `notebookutils.notebook.help("runMultiple")`. Here’s an illustrative example: 
+> `notebookutils.notebook.runMultiple(["NotebookA", "NotebookB"])`
 > 
-> Explore more about this feature [here](https://learn.microsoft.com/en-us/fabric/data-engineering/microsoft-spark-utilities#reference-run-multiple-notebooks-in-parallel).
+> Explore more about this feature [here](https://learn.microsoft.com/en-us/fabric/data-engineering/notebook-utilities#reference-run-multiple-notebooks-in-parallel).
 
 --- 
 
