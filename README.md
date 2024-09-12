@@ -28,25 +28,21 @@ Join the workshop to master building end-to-end data solutions with Microsoft Fa
 > [!IMPORTANT]
 > 9:00 am - 9:30 am - [Introduction, Set Up and Overview of Fabric Analytics Platform](exercise-0-setup/start.md)
 > 
-> 9:30 am - 10:00 am - [Exercise 1 - Ingest data with data pipelines and shortcuts](./exercise-1/exercise-1.md) 
+> 9:30 am - 10:30 am - [Exercise 1 - Ingest data with data pipelines and shortcuts](./exercise-1/exercise-1.md) 
 > 
-> 10:00 am - 10:15 am - Coffee break 15 minutes
+> 10:30 am - 11:00 am - Morning Break
 > 
-> 10:15 am - 10:45 am - [Exercise 1 - Ingest data with data pipelines and shortcuts](./exercise-1/exercise-1.md)
+> 11:00 am - 12:00 pm - [Exercise 2 - Transform data using Notebooks and Spark Pools](./exercise-2/exercise-2.md)
+>
+> 12:00 pm - 12:45 pm - Lakehouse Best Practices
 > 
-> 10:45 am - 11:45 pm - [Exercise 2 - Transform data using Notebooks and Spark Pools](./exercise-2/exercise-2.md)
+> 12:45 am - 2:00 pm - Lunch 60 minutes
 > 
-> 11:45 am - 12:45 pm - Lunch 60 minutes
+> 02:00 pm - 03:15 pm - [Exercise 3 - Generate and Serve Insights using Data Science and Power BI](./exercise-3/exercise-3.md)
 > 
-> 12:45 pm - 01:15 pm - [Exercise 3 - Generate and Serve Insights using Data Science and Power BI](./exercise-3/exercise-3.md)
+> 03:15 pm - 03:45 pm - Afternoon Break
 > 
-> 01:15 pm - 01:25 pm - Break 10 minutes
+> 03:45 pm - 04:15 pm - [Exercise 4 - Latest Fabric Features](./exercise-4/exercise-4.md)
 > 
-> 01:25 pm - 02:25 pm - [Exercise 4 - Latest Fabric Features](./exercise-4/exercise-4.md)
-> 
-> 02:25 pm - 02:35 pm - Break 10 minutes
-> 
-> 02:35 pm - 03:05 pm - Lakehouse Best Practices
-> 
-> 03:05 pm - 04:00 pm - QnA, Recap and [Extra exercises](exercise-extra/extra.md)
+> 04:15 pm - 05:00 pm - QnA, Recap and [Extra exercises](exercise-extra/extra.md)
 >
