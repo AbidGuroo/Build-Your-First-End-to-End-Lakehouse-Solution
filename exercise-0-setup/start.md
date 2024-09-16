@@ -82,7 +82,7 @@ To ensure smooth operation for multiple concurrent workshops happening today, yo
 ![One Node](../screenshots/extra/onenode1.jpg)
 
 2. **Modify Default Pool Configuration**:
-   - Go to Data Engineering / Data Science (it's under PowerBI) -> and then click on Spark settings. 
+   - Go to Data Engineering / Data Science (it's after PowerBI) -> and then click on Spark settings. 
    - Locate the "default pool for workspace" setting.
    - Click on the pencil icon (marked as "1" in the provided screenshot) to edit the pool settings.
 
@@ -97,7 +97,7 @@ To ensure smooth operation for multiple concurrent workshops happening today, yo
 
 ## 16. Download the exercise files
  
-[Click here to download the repository as a Zip](https://github.com/ekote/Build-Your-First-End-to-End-Lakehouse-Solution/archive/refs/tags/fabcon.zip) or [here to download tar.gz package](https://github.com/ekote/Build-Your-First-End-to-End-Lakehouse-Solution/archive/refs/tags/fabcon.tar.gz) to your local machine. Alternatively, you can clone the [workshop GitHub repository](https://github.com/ekote/Build-Your-First-End-to-End-Lakehouse-Solution/tree/fabcon)."
+[Click here to download the repository as a Zip](https://github.com/AbidGuroo/Build-Your-First-End-to-End-Lakehouse-Solution/archive/refs/heads/fabcon.zip) or [here to download tar.gz package](https://github.com/AbidGuroo/Build-Your-First-End-to-End-Lakehouse-Solution/archive/refs/heads/fabcon.tar.gz) to your local machine. Alternatively, you can clone the [workshop GitHub repository](https://github.com/AbidGuroo/Build-Your-First-End-to-End-Lakehouse-Solution/tree/fabcon)."
 ![Download or Clone Repository](../screenshots/start/CloneDownloadRepo.png)
 
 ---

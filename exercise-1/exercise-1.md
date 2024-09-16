@@ -76,7 +76,7 @@ Change the filter from `All` to `Azure` and select `Azure Blob Storage` for the 
 ## 1.1.8. **Enter SAS Token**
 Paste the SAS token from the description. This token grants temporary access to the blob storage, which will expire after a set duration.
 
-SAS Token (Read Only) `sv=2022-11-02&ss=bfqt&srt=sco&sp=rwdlacupiytfx&se=2024-08-31T04:00:16Z&st=2024-03-19T20:00:16Z&spr=https&sig=Av5yc0Q3W5bSncVDP2DpfkZ5nbb%2BXj4tqjC1Chwi3Hw%3D`
+SAS Token (Read Only) `sv=2022-11-02&ss=bfqt&srt=sco&sp=rlpitf&se=2025-01-01T06:25:40Z&st=2024-08-26T21:25:40Z&spr=https&sig=zphlX3YvT3BLTyS4tnWNBtsArqQbHdP%2B2t8R0Tu%2BMvM%3D`
 ![Step](../screenshots/1/8.jpg)
 
 ## 1.1.9. **Test Connection**
@@ -100,7 +100,7 @@ Review the data preview showing the table contents from the external blob storag
 ![Step](../screenshots/1/13.jpg)
 
 ## 1.1.14. **Define Data Destination**
-Switch to the `Destination` tab, select `Storage Workspace`, then `Lakehouse` and click `New` to create a new Lakehouse.
+Switch to the `Destination` tab, select `Storage Workspace`, then `Lakehouse` and click `New` to create a new Lakehouse. If UI is different, please select `More` under 'Connection' combobox, select `New Fabric Item` on the left tab and select `Lakehouse` at the top, make sure your workspace is selected then specify the name of the lakehouse. If you have lakehouse already created please click on `OneLake data hub` and select your lakehouse.
 ![Step](../screenshots/1/14.jpg)
 
 ## 1.1.15. **Name the Lakehouse**
@@ -154,6 +154,8 @@ In your workspace, you should find the `LoadRawTaxiData` pipeline and the `bronz
 
 ## 1.1.26. **Review Data Table**
 In the `Tables` section, observe the new table and preview the data it contains.
+> [!NOTE]
+> It might take few seconds for the table to appear. Please click on Refresh under Tables section of the lakehouse by right clicking on it to refresh the list.
 
 ![Step](../screenshots/1/26.jpg)
 
@@ -194,7 +196,11 @@ Imagine your company has been storing structured data from NYC Taxi's transactio
 Your company's new directive is to improve its decision-making capabilities by analyzing data in various formats across multiple sources. Therefore, the company decides to **leverage Microsoft Fabric's capabilities to analyze and manage these diverse datasets more efficiently**.
 
 
-When creating shortcuts in a lakehouse, you must understand the folder structure of the item. Lakehouses are composed of two top level folders: the Tables folder and the Files folder. The Tables folder represents the managed portion of the lakehouse, while the Files folder is the unmanaged portion of the lakehouse. In the Tables folder, you can only create shortcuts at the top level. Shortcuts aren't supported in other subdirectories of the Tables folder. If the target of the shortcut contains data in the Delta\Parquet format, the lakehouse automatically synchronizes the metadata and recognizes the folder as a table. In the Files folder, there are no restrictions on where you can create shortcuts. You can create them at any level of the folder hierarchy. Table discovery doesn't happen in the Files folder.
+When creating shortcuts in a lakehouse, you must understand the folder structure of the item. Lakehouses are composed of two top level folders: the Tables folder and the Files folder. The Tables folder represents the managed portion of the lakehouse, while the Files folder is the unmanaged portion of the lakehouse. 
+
+For a lakehouse created without schema, in the Tables folder, you can only create shortcuts at the top level. Shortcuts aren't supported in other subdirectories of the Tables folder whereas for a lakehouse created with schema, you can create a schema shortcut at the table level to bring multiple tables in one single step. Further, within each of these schemas you can create shortcut for the individual tables as well.
+
+If the target of the shortcut contains data in the Delta\Parquet format, the lakehouse automatically synchronizes the metadata and recognizes the folder as a table. In the Files folder, there are no restrictions on where you can create shortcuts. You can create them at any level of the folder hierarchy. Table discovery doesn't happen in the Files folder.
 
 ![Shortcuts](https://learn.microsoft.com/en-us/fabric/onelake/media/onelake-shortcuts/lake-view-table-view.png)
 
@@ -265,21 +271,21 @@ Expand on the options for the file section by clicking the three dots for the `F
 ![Step](../screenshots/1/34.jpg)
 
 ## 1.3.2. Shortcut Options
-There are multiple source options available for accessing data directly without copying. Currently, shortcuts support data from OneLake, Amazon S3, Azure Data Lake Storage Gen2, and Dataverse. Select `Azure Data Lake Storage Gen2` as indicated on the screen and click `Next`.
+There are multiple source options available for accessing data directly without copying. Currently, shortcuts support data from OneLake, Amazon S3, Azure Data Lake Storage Gen2, Google Cloud Storage and Dataverse. Select `Azure Data Lake Storage Gen2` as indicated on the screen and click `Next`.
 ![Step](../screenshots/1/35.jpg)
 
 ## 1.3.3. Configure New Shortcut
-Provide the necessary URL by copying and pasting it from the task description. Then, choose your connection, retaining the automatically generated name if possible. For authentication, select `SAS token`, paste the provided token, and then click `Next` after filling in all details.
+Click on `Create new connection` radio button at the top and provide the necessary URL by copying and pasting it from the task description. Then, choose your connection, retaining the automatically generated name if possible. For authentication, select `SAS token`, paste the provided token, and then click `Next` after filling in all details.
 
 * Blob Storage Account URL `https://transportation23kotcorp.dfs.core.windows.net/`
-* SAS Token (Read Only) `sv=2022-11-02&ss=bfqt&srt=sco&sp=rwdlacupyx&se=2024-08-31T05:45:27Z&st=2024-03-19T21:45:27Z&spr=https,http&sig=ifGqJa6706RCFaciJapwOL6vHoKzy9ltno3LznjQMkY%3D`
+* SAS Token (Read Only) `sv=2022-11-02&ss=bfqt&srt=sco&sp=rwlacpx&se=2025-01-01T07:11:02Z&st=2024-09-11T22:11:02Z&spr=https&sig=u%2BX878QKr3p5NZnK%2BU4l7iXbzJiMsY9lpLbj%2BzeRix8%3D`
 
 ![Step](../screenshots/1/36.jpg)
 
 **If you encounter the error message `The specified connection name already exists. Try choosing a different name`, please make sure that the name you choose for the connection is unique.**
 
 ## 1.3.4. Verify ADLS Gen2 Access
-Ensure correct configuration by checking the folder named `2023`. Inside it, locate a Parquet file. Confirm the selection of the appropriate folder as shown on the screen, then click `Next`.
+Ensure correct configuration by checking the folder named `2023`. Inside it, locate a Parquet file. Confirm the selection of the appropriate folder as shown on the screen, then click `Next` and then `Create`.
 
 > ![!IMPORTANT]
 > We are creating a demo to a folder named 2023, and you need to just observe and ack that inside that folder there is a required file (as presented on the screenshot). 
@@ -308,7 +314,7 @@ Acknowledge the notification indicating that your file is currently being loaded
 After the loading process completes, refresh the Lakehouse by clicking the three dots next to the table and selecting `Refresh`. A new table should now be visible.
 
 ## 1.3.10. Open in Notebook
-Notice that Fabric has generated a new notebook for you, containing the SQL to load your data from the newly created table.
+Click on `...` next to the newly created table and then `Open notebook` -> `New notebook` or click on `New notebook` under `Open notebook` in the ribbon at the top. Now you can drag and drop the table into the notebook cell and you will notice that Fabric has generated code containing the SQL to load your data from that table.
 ![Step](../screenshots/1/43.jpg)
 
 ![Step](../screenshots/1/44.jpg)
@@ -340,7 +346,7 @@ Ensure that the `bronzerawdata` Lakehouse is set as the default for the notebook
 ## Task 1.4 Management of Spark Sessions
 Learn to manage and terminate Spark sessions within your workspace to ensure efficient resource utilization and cost management.
 
-Note that the default session expiration time for Starter and Spark Pools is set to 20 minutes. A Spark pool will be deallocated if not used for 2 minutes after session expiration.
+Note that the default session expiration time for Starter and Spark Pools is set to 20 minutes. You can reset it or change it to higher duration by clicking on the `Session Ready` link at the bottom left of the notebook. A Spark pool will be deallocated if not used for 2 minutes after session expiration.
 
 **Action required <ins>after</ins> you follow the provided screenshots and descriptions.**
 
