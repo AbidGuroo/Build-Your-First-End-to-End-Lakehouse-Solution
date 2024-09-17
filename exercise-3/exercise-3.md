@@ -1,7 +1,7 @@
 # Exercise 3 - Generate and Serve Insights using Data Science and Power BI 
 
 > [!NOTE]
-> Timebox: 60 minutes
+> Timebox: 75 minutes
 > 
 > [Back to Agenda](./../README.md#agenda) | [Back to Exercise 2](./../exercise-2/exercise-2.md) | [Up next Exercise 4](./../exercise-4/exercise-4.md)
 > #### List of exercises:
