@@ -32,11 +32,11 @@ Join the workshop to master building end-to-end data solutions with Microsoft Fa
 > 
 > 10:30 am - 11:00 am - Morning Break
 > 
-> 11:00 am - 12:00 pm - [Exercise 2 - Transform data using Notebooks and Spark Pools](./exercise-2/exercise-2.md)
+> 11:00 am - 12:15 pm - [Exercise 2 - Transform data using Notebooks and Spark Pools](./exercise-2/exercise-2.md)
 >
-> 12:00 pm - 12:45 pm - Lakehouse Best Practices
+> 12:15 pm - 12:45 pm - Lakehouse Best Practices
 > 
-> 12:45 am - 2:00 pm - Lunch 60 minutes
+> 12:45 am - 2:00 pm - Lunch Break
 > 
 > 02:00 pm - 03:15 pm - [Exercise 3 - Generate and Serve Insights using Data Science and Power BI](./exercise-3/exercise-3.md)
 > 
