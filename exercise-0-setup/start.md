@@ -30,7 +30,7 @@ As per Tenants' policy, setting up MFA is required. However, you can defer this 
 ![Login](../screenshots/start/10.jpg)
 
 ## 6. Welcome to Microsoft Fabric
-You have successfully logged in to Microsoft Fabric!
+You have successfully logged in to Microsoft Fabric! If you don't see the screen as below, click on the icon in the bottom left corner and click on `Microsoft Fabric ->` at the top of the fly-out pane.
 ![Login](../screenshots/start/4.jpg)
 
 ## 7. Explore Workloads
@@ -54,11 +54,11 @@ Click on the `Workspaces` icon located on the left part of the screen.
 ![Login](../screenshots/start/12.jpg)
 
 ## 12. Create a New Workspace
-A sidebar will appear with a list of all accessible subscriptions. Follow the instructions and click `New Workspace.`
+A sidebar will appear with a list of all accessible workspaces. Follow the instructions and click `New Workspace.`
 ![Login](../screenshots/start/13.jpg)
 
 ## 13. Name Your Workspace
-Give your new workspace a name, adhering to the provided naming convention. Verify the name and click `Apply.` Follow the naming convention and assign a name: `urban-innovation-deNNN`, where `NNN` represents the number assigned to you. For example, `urban-innovation-de001` (Estera’s workspace).
+Give your new workspace a name, adhering to the provided naming convention. Verify the name and click `Apply.` Follow the naming convention and assign a name: `urban-innovation-deNNN`, where `NNN` represents the number assigned to you. For example, `urban-innovation-de001` (Arshad’s workspace).
 
 ![Login](../screenshots/start/14.jpg)
 
@@ -67,12 +67,12 @@ Congratulations, your new workspace has been successfully created! This dedicate
 ![Login](../screenshots/start/15.jpg)
 
 
-## 15. Adjust default pool size to 2 nodes
+## 15. Adjust default pool size to 1 node
 
-To ensure smooth operation for multiple concurrent workshops happening today, you need to adjust the default configuration of the compute cluster in your Fabric workspace to scale down the maximum number of nodes to 2.
+To ensure smooth operation for multiple concurrent workshops happening today, you need to adjust the default configuration of the compute cluster in your Fabric workspace to scale down the maximum number of nodes to 1.
 
 > [!NOTE]  
->  This task is crucial for optimizing resource usage and ensuring that the workshops run smoothly for all participants. By reducing the maximum number of nodes to 2, you help manage the load on the system and improve the experience for everyone involved.
+>  This task is crucial for optimizing resource usage and ensuring that the workshops run smoothly for all participants. By reducing the maximum number of nodes to 1, you help manage the load on the system and improve the experience for everyone involved during this tutorial.
 
 
 1. **Navigate to Workspace Settings**:
@@ -82,14 +82,14 @@ To ensure smooth operation for multiple concurrent workshops happening today, yo
 ![One Node](../screenshots/extra/onenode1.jpg)
 
 2. **Modify Default Pool Configuration**:
-   - Go to Data Engineering / Data Science (it's after PowerBI) -> and then click on Spark settings. 
-   - Locate the "default pool for workspace" setting.
-   - Click on the pencil icon (marked as "1" in the provided screenshot) to edit the pool settings.
+   - Go to `Data Engineering / Data Science` (it's after PowerBI) -> and then click on `Spark settings`. 
+   - Locate the `Starterpool` under `Default pool for workspace` under `Pool` of `Spark settings`. .
+   - Click on the pencil icon (marked as "2" in the provided screenshot) to edit the pool settings.
 
 ![One Node](../screenshots/extra/onenode2.jpg)
 
 3. **Adjust Autoscale Settings and Save Changes**:
-   - In the default pool configuration, change the autoscale maximum setting from 10 to 2. This limits the maximum number of nodes to 2 to prevent resource over-allocation.
+   - In the default pool configuration, change the autoscale maximum setting from 10 to 1. This limits the maximum number of nodes to 1 to prevent resource over-allocation.
    - Confirm and save your modifications to the default pool settings.
 
 ![One Node](../screenshots/extra/onenode3.jpg)
