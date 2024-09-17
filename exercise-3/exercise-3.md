@@ -93,18 +93,18 @@ In this exercise, you will explore and visualize taxi trip data, including the p
 #### Sample Visuals to analyze predictedTripDuration.
 
 1. Create a Slicer visualization for pickupDate.
-    - Select the slicer option from the visualizations pane and select ***pickupDate*** from the data pane and drop it on the created slicer visualization field of the date slider visual.
+    - Select the slicer <img src="../screenshots/icons/slicer.png" alt="slicer" width="30"/> option from the visualizations pane and select ***pickupDate*** from the data pane and drop it on the created slicer visualization field of the date slider visual.
 
 2. Visualize Average tripDuration and predictedTripDuration by timeBins using a clustered column chart.
-    - Add a clustered column chart, add ***timeBins*** to X-axis, ***trip_duration*** and ***predictedtrip_duration* **to Y-axis and change the aggregation method to Average.
+    - Add a clustered column chart <img src="../screenshots/icons/clusteredcolumn.png" alt="clustered" width="30"/>, add ***timeBins*** to X-axis, ***trip_duration*** and ***predictedtrip_duration* **to Y-axis and change the aggregation method to Average.
 
 3. Visualize Average tripDuration and predictedTripDuration by weekDayName.
-    - Add an area chart visual and add ***weekDayName* **onto X-axis, ***trip_duration*** to Y-axis and ***predictedTripDuration*** to secondary Y-axis. Switch aggregation method to Average for both Y-axes.
+    - Add an area chart <img src="../screenshots/icons/areachart.png" alt="area" width="30"/> visual and add ***weekDayName* **onto X-axis, ***trip_duration*** to Y-axis and ***predictedTripDuration*** to secondary Y-axis. Switch aggregation method to Average for both Y-axes.
 
 4. Visualize Average tripDuration and predictedTripDuration by pickupDate using line chart.
-    - Add a line chart visual and add ***pickupDate*** onto X-axis, ***tripDuration*** and ***predictedTripDuration*** to Y-axis and switch aggregation method to Average for both fields.
+    - Add a line <img src="../screenshots/icons/linechart.png" alt="line" width="30"/> chart visual and add ***pickupDate*** onto X-axis, ***tripDuration*** and ***predictedTripDuration*** to Y-axis and switch aggregation method to Average for both fields.
 
-5. Create Card Visuals for single view of key metrics.
+5. Create Card <img src="../screenshots/icons/cardvisual.png" alt="card" width="30"/> Visuals for single view of key metrics.
    - Add a Card visual and drag ***tip_amount*** to fields and switch aggregation method to median.
    - Add 2nd Card visual and drag ***fare_amount*** to fields and switch aggregation method to average.
    - Add 3rd Card visual and drag ***predictedtrip_duration*** to fields and switch aggregation method to average. 
