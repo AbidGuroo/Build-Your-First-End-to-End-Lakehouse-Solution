@@ -1,17 +1,20 @@
 # Exercise 3 - Generate and Serve Insights using Data Science and Power BI 
 
 > [!NOTE]
-> Timebox: 60 minutes
+> Timebox: 75 minutes
 > 
 > [Back to Agenda](./../README.md#agenda) | [Back to Exercise 2](./../exercise-2/exercise-2.md) | [Up next Exercise 4](./../exercise-4/exercise-4.md)
 > #### List of exercises:
-> * [Task 3.1 Predict Trip Duration Using Data Science in Fabric Lakehouse](#task-41-predict-trip-duration-using-data-science-in-fabric-lakehouse)
-> * [Task 3.2 Explore and Visualize Taxi Trip Data Using Power BI and Direct Lake](#task-42-explore-and-visualize-taxi-trip-data-using-power-bi-and-direct-lake)
-> * [Task 3.3 Publish and Share the Power BI Report](#task-43-publish-and-share-the-power-bi-report)
+> * [Task 3.1 Predict Trip Duration Using Data Science in Fabric Lakehouse](#task-31-predict-trip-duration-using-data-science-in-fabric-lakehouse)
+> * [Task 3.2 Explore and Visualize Taxi Trip Data Using Power BI and Direct Lake](#task-32-explore-and-visualize-taxi-trip-data-using-power-bi-and-direct-lake)
+> * [Task 3.3 Publish and Share the Power BI Report](#task-33-publish-and-share-the-power-bi-report)
 
 # Context
 
-Microsoft Fabric provides Data Science experiences that enable users to perform comprehensive data science workflows. These workflows cover the entire data science process, from data exploration and preparation to experimentation, modeling, model scoring, and serving predictive insights in Power BI Reports.
+Microsoft Fabric provides Data Science experiences that enable users to perform comprehensive data science workflows. These workflows cover the entire data science process, from data exploration and preparation to experimentation, modeling, model scoring, and serving predictive insights in Power BI Reports. In Fabric each step of the Data Science process is powered by both native built features like Data Wrangler, NotebookUtils, MLFlow, SynapseML, Copilot, PowerBI etc. in addition to numerous open-source libraries enabling a Data Scientist to built a machine learning solution. The below diagram outlines an end-to-end Data Science process and the Fabric features relevant to the process.
+
+![End-to-End Data Science](../screenshots/4/EndtoEndDataScience.png)
+
 
 The data in your lakehouse tables is included in a dataset that defines a relational model for your data. You can edit this dataset, defining custom measures, hierarchies, aggregations, and other elements of a data model. You can then use the dataset as the source for a Power BI report that enables you to visualize and analyze the data.
 
@@ -39,7 +42,7 @@ DirectLake mode now eliminates this import requirement by loading the data files
 
 # Task 3.1 Predict Trip Duration Using Data Science in Fabric Lakehouse
 
-In this exercise, you will take on the role of a data scientist tasked with exploring, cleaning, and transforming a dataset containing taxi trip data. You will build a machine learning model to predict the duration of taxi trips using the New York taxi greencab dataset containing data from 2015, which includes information like pickup and drop-off times, locations, fares, and passenger counts. You will then apply the machine learning model to generate predictions on greencab from the year 2023 asnd save them to lakehouse.
+In this exercise, you will take on the role of a data scientist tasked with exploring, cleansing, and transforming a dataset containing taxi trip data. You will build a machine learning model to predict the duration of taxi trips using the New York taxi greencab dataset containing data from 2015, which includes information like pickup and drop-off times, locations, fares, and passenger counts. You will then apply the machine learning model to generate predictions on greencab from the year 2023 asnd save them to lakehouse.
 
 1. **Download the Exercise Notebook**:
    - Download the provided Jupyter notebook, [Exercise 3 - Generate Insights using Data Science](Exercise%203%20-%20Generate%20Insights%20using%20Data%20Science.ipynb), to your local computer. This notebook contains the steps you will follow to complete the task. [This screenshot presents the steps to do it](../screenshots/extra/download-notebook-2.jpg).
@@ -50,6 +53,7 @@ In this exercise, you will take on the role of a data scientist tasked with expl
 
 3. **Follow Notebook Instructions**:
    - Once the notebook is imported into your Fabric workspace, open it.
+   - Attach ***Silver*** and ***Gold** Lakehouses to the notebook. Stepwise instructions to attach the lakehouses are included in [Attach Lakehouses](../screenshots/attachlakehouses.md).
    - Follow the detailed steps outlined within the notebook. These will guide you through:
      - Data exploration and cleaning: Understand the dataset's structure, clean any inconsistencies, and prepare the data for modeling.
      - Feature engineering: Create new features from the existing data to help improve the predictive power of your machine learning model.
@@ -64,7 +68,7 @@ In this exercise, you will take on the role of a data scientist tasked with expl
 
 # Task 3.2 Explore and Visualize Taxi Trip Data Using Power BI and Direct Lake
 
-In this exercise, you will explore and visualize taxi trip data, including the predicted trip durations from the machine learning model you developed in Task 3.1. You will use Microsoft Fabric's Direct Lake feature for direct connectivity and create a Power BI report to analyze the data.
+In this exercise, you will explore and visualize taxi trip data, including the predicted trip durations from the machine learning model you developed in Task 3.1. You will use Microsoft Fabric's Semantic Model and Direct Lake feature for direct connectivity and create a Power BI report to analyze the data. Semantic models in Fabric represent a source of data that's ready for reporting and visualization, and exist as an abstraction layer that translates complex data models into an understandable format.
 
 ### Steps to Follow
 
@@ -74,7 +78,7 @@ In this exercise, you will explore and visualize taxi trip data, including the p
 
 2. **Create a New Semantic Model**:
    - Click the "New semantic model" button on the top ribbon.
-   - In the dialog, name the semantic model (e.g., NYCTaxiTrips) and select **greentaxi_predicted** as the data source. Confirm to create the semantic model linked to your predictive data.
+   - In the dialog, name the semantic model (e.g., NYCTaxiTrips), expand the 'dbo' schema and select **greentaxi_predicted** under 'Tables' as the data source. Confirm to create the semantic model linked to your predictive data.
      ![New Semantic Model](../screenshots/4/NewSemanticModel.png)
 
 3. **Generate a New Power BI Report**:
@@ -124,8 +128,8 @@ In this task, you will publish the Power BI report created in the previous task 
 
 1. **Save and Name the Report**:
    - In the Power BI report editor, navigate to the File menu and select the Save or Save As option to open the report save dialog box.
-   - Enter a name for your report, for example, *NYC Taxi Trip Analysis*.
-   - Choose a target workspace within Power BI where you want the report to be published and click Save.
+   - Select the workspace created for this tutorial.
+   - Enter a name for your report, for example, *NYC Taxi Trip Analysis* and click Save.
      ![Save Report](../screenshots/4/SaveReport.png)
 
 2. **Publish the Report**:
