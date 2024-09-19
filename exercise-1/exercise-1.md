@@ -55,12 +55,13 @@ Make adjustments and observe the changes in the main screen's editing area.
 
 
 ## 1.1.5. **Configure Data Store**
-In the new tab, set the data store type to `External` and then click `New Connection`.
+While selected `Copy Data` activity, click on `Source` tab, click on `Connection` combobox and then click on `More`.
+
 ![Step](../screenshots/1/5.jpg)
 
 
 ## 1.1.6. **Add Connection to Blob Storage**
-Change the filter from `All` to `Azure` and select `Azure Blob Storage` for the new connection.
+Change the filter to `New` and select `Azure Blob` for the new connection.
 ![Step](../screenshots/1/6.jpg)
 
 
@@ -74,7 +75,7 @@ Change the filter from `All` to `Azure` and select `Azure Blob Storage` for the 
 ![Step](../screenshots/1/7.jpg)
 
 ## 1.1.8. **Enter SAS Token**
-Paste the SAS token from the description. This token grants temporary access to the blob storage, which will expire after a set duration.
+Paste the SAS token from the description. This token grants temporary access to the blob storage, which will expire after a set duration. Finally click on `Connect` to connect to the data source.
 
 SAS Token (Read Only) `sv=2022-11-02&ss=bfqt&srt=sco&sp=rlpitf&se=2025-01-01T06:25:40Z&st=2024-08-26T21:25:40Z&spr=https&sig=zphlX3YvT3BLTyS4tnWNBtsArqQbHdP%2B2t8R0Tu%2BMvM%3D`
 ![Step](../screenshots/1/8.jpg)
@@ -100,15 +101,21 @@ Review the data preview showing the table contents from the external blob storag
 ![Step](../screenshots/1/13.jpg)
 
 ## 1.1.14. **Define Data Destination**
-Switch to the `Destination` tab, select `Storage Workspace`, then `Lakehouse` and click `New` to create a new Lakehouse. If UI is different, please select `More` under 'Connection' combobox, select `New Fabric Item` on the left tab and select `Lakehouse` at the top, make sure your workspace is selected then specify the name of the lakehouse. If you have lakehouse already created please click on `OneLake data hub` and select your lakehouse.
+Switch to the `Destination` tab, Click on `More` under `Connection` combobox.
+
 ![Step](../screenshots/1/14.jpg)
 
+Next, under `Home` click on `Lakehouse`.
+![Step](../screenshots/1/14-1.jpg)
+
+
 ## 1.1.15. **Name the Lakehouse**
-Follow [the naming conventions provided](../exercise-0-setup/naming-convention.md), input the name, and click `Create`.
+Follow [the naming conventions provided](../exercise-0-setup/naming-convention.md), select your workspace where this lakehouse needs to be created and then specify the name of the lakehouse, and click `Create and connect`.
 ![Step](../screenshots/1/15.jpg)
 
 ## 1.1.16. **Review Lakehouse**
 Verify the newly created Lakehouse is visible under the appropriate tab.
+
 ![Step](../screenshots/1/16.jpg)
 
 ## 1.1.17. **Configure Advanced Options**
@@ -149,11 +156,11 @@ In the sidebar, review details such as total duration and the amount of data tra
 ![Step](../screenshots/1/24.jpg)
 
 ## 1.1.25. **Access Your Workspace**
-In your workspace, you should find the `LoadRawTaxiData` pipeline and the `bronzerawdata` Lakehouse. Enter the Lakehouse.
+In your workspace, you should find the `LoadRawTaxiData` pipeline and the `bronzerawdata` Lakehouse. Enter the Lakehouse - Click on the name of the lakehouse or click on three dots `...` and then `Open`.
 ![Step](../screenshots/1/25.jpg)
 
 ## 1.1.26. **Review Data Table**
-In the `Tables` section, observe the new table and preview the data it contains.
+In the `Tables` section, observe the new table and preview the data it contains by clicking on the name of the table.
 > [!NOTE]
 > It might take few seconds for the table to appear. Please click on Refresh under Tables section of the lakehouse by right clicking on it to refresh the list.
 
@@ -235,7 +242,8 @@ Navigate back to the main Lakehouse view, expand the table options for the final
 ![Step](../screenshots/1/31.jpg)
 
 ## 1.2.6. **Maintenance Options and Optimization**
-Here, you will find options for optimizing file size and vacuuming, which involves removing files that are no longer needed. Both processes can be automated. This section also details how Z-order optimization is applied to your data; hover over the information icon for more details.
+Here, you will find options for optimizing file size and vacuuming, which involves removing files that are no longer needed. Both processes can be automated. This section also details how V-order optimization is applied to your data; hover over the information icon for more details.
+
 ![Step](../screenshots/1/32.jpg)
 
 ## 1.2.7. **Completion of Task**
@@ -314,9 +322,11 @@ Acknowledge the notification indicating that your file is currently being loaded
 After the loading process completes, refresh the Lakehouse by clicking the three dots next to the table and selecting `Refresh`. A new table should now be visible.
 
 ## 1.3.10. Open in Notebook
-Click on `...` next to the newly created table and then `Open notebook` -> `New notebook` or click on `New notebook` under `Open notebook` in the ribbon at the top. Now you can drag and drop the table into the notebook cell and you will notice that Fabric has generated code containing the SQL to load your data from that table.
+Click on `New notebook` under `Open notebook` in the ribbon at the top. 
+
 ![Step](../screenshots/1/43.jpg)
 
+Now click on the lakehouse, select the table you created and drag and drop the table into the notebook cell and you will notice that Fabric has generated code containing the SQL to load your data from that table.
 ![Step](../screenshots/1/44.jpg)
 
 ## 1.3.11. Verify Notebook Configuration

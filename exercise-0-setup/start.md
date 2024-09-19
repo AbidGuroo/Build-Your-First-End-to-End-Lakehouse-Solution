@@ -67,12 +67,12 @@ Congratulations, your new workspace has been successfully created! This dedicate
 ![Login](../screenshots/start/15.jpg)
 
 
-## 15. Adjust default pool size to 1 node
+## 15. Adjust default pool size to 2 nodes
 
-To ensure smooth operation for multiple concurrent workshops happening today, you need to adjust the default configuration of the compute cluster in your Fabric workspace to scale down the maximum number of nodes to 1.
+To ensure smooth operation for multiple concurrent workshops happening today, you need to adjust the default configuration of the compute cluster in your Fabric workspace to scale down the maximum number of nodes to 2.
 
 > [!NOTE]  
->  This task is crucial for optimizing resource usage and ensuring that the workshops run smoothly for all participants. By reducing the maximum number of nodes to 1, you help manage the load on the system and improve the experience for everyone involved during this tutorial.
+>  This task is crucial for optimizing resource usage and ensuring that the workshops run smoothly for all participants. By reducing the maximum number of nodes to 2, you help manage the load on the system and improve the experience for everyone involved during this tutorial.
 
 
 1. **Navigate to Workspace Settings**:
@@ -90,7 +90,7 @@ To ensure smooth operation for multiple concurrent workshops happening today, yo
 
 3. **Adjust Autoscale Settings and Save Changes**:
    - In the default pool configuration, change the autoscale maximum setting from 10 to 1. This limits the maximum number of nodes to 1 to prevent resource over-allocation.
-   - Confirm and save your modifications to the default pool settings.
+   - Confirm and save your modifications to the default pool settings. Please note, you would have to hit `Save` twice. First on `Edit pool` pane and then second on the `Workspace settings` pane.
 
 ![One Node](../screenshots/extra/onenode3.jpg)
 
