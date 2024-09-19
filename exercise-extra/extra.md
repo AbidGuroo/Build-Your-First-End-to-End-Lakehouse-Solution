@@ -4,6 +4,7 @@
 > 
 > Back to [Agenda](./../README.md#agenda) | [Start Steps](../exercise-0-setup/start.md) | [Exercise 1](./../exercise-1/exercise-1.md) | [Exercise 2](./../exercise-2/exercise-2.md) | [Exercise 3](./../exercise-3/exercise-3.md) | [Exercise 4](./../exercise-4/exercise-4.md) | [Exercise 5](./../exercise-5/exercise-5.md)
 > #### List of extra exercises:
+> * [Copilot for notebooks](#copilot-for-notebooks)
 > * [SQL Analytics Endpoint](#sql-analytics-endpoint)
 > * [Connect to a Fabric SQL Endpoint Using SQL Server Management Studio (SSMS)](#connect-to-a-fabric-sql-endpoint-using-sql-server-management-studio-ssms)
 > * [Execute T-SQL Queries on Lakehouse Delta Tables](#execute-t-sql-queries-on-lakehouse-delta-tables)
@@ -23,7 +24,49 @@
 
 
 
-  
+# Copilot for notebooks
+
+With Copilot for Data Science and Data Engineering, you can chat with an AI assistant that can help you handle your data analysis and visualization tasks. You can ask the Copilot questions about lakehouse tables, Power BI Datasets, or Pandas/Spark dataframes inside notebooks. Copilot answers in natural language or code snippets. Copilot can also generate data-specific code for you, depending on the task. For example, Copilot for Data Science and Data Engineering can generate code for:
+* Chart creation 
+* Filtering data 
+* Applying transformations 
+* Machine learning models
+
+
+Investigate the `green201501` table within your lakehouse, and seek insights about the dataset. Additionally, inquire how to compute the average trip distance and fare amount by each payment type.
+
+## Accessing Copilot
+Open an existing notebook(like ***Just exploration***) in your workspace or create a new notebook. Select the `Copilot` icon found in the notebooks ribbon. This action opens the Copilot chat panel. When you click on `Get started` and it creates a new cell at the top of your notebook. Note: This cell is essential for initializing a Spark session within a Fabric notebook and must be executed for Copilot to function correctly. Future releases may introduce alternative initialization methods and this step might not longer be necessary.
+![Step](../screenshots/extra/CopilotStart.png)
+
+## Get Started with Copilot
+When the Copilot panel opens, click `Get Started` to initiate your interaction with the AI assistant.
+![Step](../screenshots/extra/CopilotGetStart.png)
+
+## Library Installation
+Copilot will automatically insert a new cell containing the necessary library installation script. Execute this cell by clicking the `Play` button to install the required libraries for Copilot functionalities.
+![Step](../screenshots/2/3.jpg)
+
+## Data Privacy and Security Awareness
+Post-installation, you will be presented with a note on data privacy and security. Please read through this to understand how your data is stored and processed. Additionally, guidelines will be provided on how to effectively communicate with Copilot.
+![Step](../screenshots/extra/CopilotPrivacy.png)
+
+## Interacting with Copilot
+Now, engage with Copilot by exploring various prompts related to your data. Feel free to ask for code snippets, clarification, or paste the generated code into a new notebook cell. This is an opportunity to explore the capabilities and assistance Copilot offers for data science and engineering tasks.
+
+> [!TIP]
+> Please feel free to ask Copilot any questions to deepen your understanding of the dataset and enhance our workshop experience.
+> Just an example: `Analyze my table named green201501 and provide insights about the data`. 
+
+![Step](../screenshots/2/5.jpg)
+
+This quick demonstration aims to highlight the ease of accessing Copilot for insightful data analysis.
+
+> [!IMPORTANT]  
+> Copilot is here to support and guide, to "co-pilot", not to control and "pilot". 
+> We'll move forward with our structured activities and that documentation, allowing them to serve as our copilot instead of using Copilot directly.
+
+
 
 
 # SQL Analytics Endpoint
