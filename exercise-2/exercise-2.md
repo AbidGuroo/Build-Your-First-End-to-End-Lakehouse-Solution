@@ -13,14 +13,14 @@
 > * [Task 2.6 Follow the Notebook](#task-26-follow-the-notebook)
 > * [Task 2.7 Automation](#task-27-automation)
 > * [Task 2.8 Confirm End Results](#task-29-confirm-end-results)
-> * [Task 2.9 Create Gold Lakehouse (required for Exercise 4)](#task-29-create-gold-lakehouse-required-for-exercise-4)
+> * [Task 2.9 Create Gold Lakehouse (required for Exercise 3)](#task-29-create-gold-lakehouse-required-for-exercise-3)
 
 
 
 # Context
 In this exercise, we will explore data engineering tasks aimed at transforming raw data into a refined silver layer.
 
-By the end of the workshop, we will have completed the implementation of the medallion architecture:
+By the end of the exercise, we will have completed the implementation of the medallion architecture:
 ![Data overview](../screenshots/2/intro.png)
 
 
@@ -335,21 +335,17 @@ Review the screenshots provided to compare and confirm the setup in your Lakehou
 
 ---
 
-# Task 2.9 Create Gold Lakehouse (required for Exercise 4)
+# Task 2.9 Create Gold Lakehouse (required for Exercise 3)
 
-The final task before delving into data science work (Exercise 4) within the notebook is to create a new Gold Lakehouse named `goldcurated`.
+The final task before delving into data science work (Exercise 3) within the notebook is to create a new Gold Lakehouse named `goldcurated`.
 
 Please follow these steps:
-## 2.9.1. From the view of all artifacts you have created inside your workspace, click on the `New` button.
-![Step](../screenshots/2/60.jpg)
+1. From the the workspace view, click on the `New item` button.
+2. Then select `Lakehouse` from the Store data category.
+3. Adhere to the naming convention and enter a name for the Lakehouse. The suggested name is `goldcurated`.
+![Step](../screenshots/2/creategold.png)
 
-## 2.9.2. Then select `Lakehouse` from the extensive list.
-![Step](../screenshots/2/61.jpg)
-
-## 2.9.3. Adhere to the naming convention and enter a name for the Lakehouse. The suggested name is `goldcurated`.
-![Step](../screenshots/2/62.jpg)
-
-## 2.9.4. Confirm that your Gold Lakehouse has been created.
+4. Confirm that your Gold Lakehouse has been created by opening the lakehouse item from the workspace.
 ![Step](../screenshots/2/63.jpg)
 
 
