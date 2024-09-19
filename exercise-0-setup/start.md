@@ -89,7 +89,7 @@ To ensure smooth operation for multiple concurrent workshops happening today, yo
 ![One Node](../screenshots/extra/onenode2.jpg)
 
 3. **Adjust Autoscale Settings and Save Changes**:
-   - In the default pool configuration, change the autoscale maximum setting from 10 to 1. This limits the maximum number of nodes to 1 to prevent resource over-allocation.
+   - In the default pool configuration, change the autoscale maximum setting from 10 to 2. This limits the maximum number of nodes to 2 to prevent resource over-allocation.
    - Confirm and save your modifications to the default pool settings. Please note, you would have to hit `Save` twice. First on `Edit pool` pane and then second on the `Workspace settings` pane.
 
 ![One Node](../screenshots/extra/onenode3.jpg)
