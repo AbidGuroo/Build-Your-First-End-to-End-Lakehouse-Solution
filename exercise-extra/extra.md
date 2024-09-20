@@ -2,7 +2,7 @@
 
 > [!NOTE]
 > 
-> Back to [Agenda](./../README.md#agenda) | [Start Steps](../exercise-0-setup/start.md) | [Exercise 1](./../exercise-1/exercise-1.md) | [Exercise 2](./../exercise-2/exercise-2.md) | [Exercise 3](./../exercise-3/exercise-3.md) | [Exercise 4](./../exercise-4/exercise-4.md) | [Exercise 5](./../exercise-5/exercise-5.md)
+> Back to [Agenda](./../README.md#agenda) | [Start Steps](../exercise-0-setup/start.md) | [Exercise 1](./../exercise-1/exercise-1.md) | [Exercise 2](./../exercise-2/exercise-2.md) | [Exercise 3](./../exercise-3/exercise-3.md) | [Exercise 4](./../exercise-4/exercise-4.md) 
 > #### List of extra exercises:
 > * [Copilot for notebooks](#copilot-for-notebooks)
 > * [SQL Analytics Endpoint](#sql-analytics-endpoint)
@@ -12,11 +12,11 @@
 > * [Sharing a Notebook for Collaboration](#sharing-a-notebook-for-collaboration)
 > * [High concurrency mode in Fabric Spark](#high-concurrency-mode-in-fabric-spark)
 > * [Lineage](#lineage)
-> * [Specify the file format and compression type for the sink datasets in Data Factory](##specify-the-file-format-and-compression-type-for-sink-datasets-in-data-factory)
+> * [Specify the file format and compression type for the sink datasets in Data Factory](#specify-the-file-format-and-compression-type-for-sink-datasets-in-data-factory)
 > *  [Monitor the pipeline run and verify the output](#monitor-the-pipeline-run-and-verify-the-output)
 > *  [Medallion architecture](#medallion-architecture)
 > *  [Schedule your notebook](#schedule-your-notebook-for-multiple-daily-runs)
-> *  [Create a new Spark Pool on the Workspace-level settings]()
+> *  [Create a new Spark Pool on the Workspace-level settings](#create-a-new-spark-pool-with-workspace-settings)
 > *  [Saved with V-Order?](#verify-v-order)
 > *  [Merge](#merge)
 
@@ -309,7 +309,7 @@ Understand the relationships and flow of data within your Fabric workspace using
 
 # Specify the File Format and Compression Type for Sink Datasets in Data Factory
 
-Based on Wikipedia, Snappy (formerly known as Zippy) is a fast data compression and decompression library developed by Google. It prioritizes high speed over maximum compression, offering significant speed benefits: 250 MB/s compression and 500 MB/s decompression using a single core of a circa 2011 2.26 GHz Core i7 processor. However, it provides 20–100% lower compression ratio compared to gzip. For more details, you can refer to the [Snappy article on Wikipedia](https://en.wikipedia.org/wiki/Snappy_(compression)).
+Snappy Compression, originally developed by Google, is a high-speed, efficient data compression and decompression library. Unlike some algorithms that focus on achieving the highest compression ratios, Snappy prioritizes speed, making it ideal for real-time data processing where rapid throughput is essential. It's frequently employed in big data frameworks like Hadoop, Spark and Cassandra, ensuring swift data handling without compromising performance. Whether dealing with large datasets or requiring quick, on-the-fly data compression, Snappy strikes a perfect balance between efficiency and speed. For more details, you can refer to the [Snappy article on Wikipedia](https://en.wikipedia.org/wiki/Snappy_(compression)).
 
 Given this information, you might question the decision to use gzip instead of Snappy and how you can modify this setting. Here's how to proceed:
 
@@ -581,6 +581,10 @@ Enhance your understanding of data handling within Fabric Spark by loading, upda
    - Execute both Merge statements in your Fabric Spark notebooks.
    - Validate the outcomes by verifying that the bronze and silver layer accurately reflects historical corrections and that the separate table correctly includes new or updated records.
 
+
+---
+> [!IMPORTANT]
+> Once completed, go back to [Agenda](./../README.md#agenda).
 
 [//]: # ()
 [//]: # (## Use Environment to tailor your runtime)

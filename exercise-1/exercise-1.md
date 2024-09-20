@@ -227,7 +227,7 @@ In the `Tables` section of your Lakehouse, click the three dots next to your tab
 ![Step](../screenshots/1/28.jpg)
 
 ## 1.2.3. **Data Format and Management**
-Observe that the table's data format is listed as `Managed`, indicating that the table is a managed entity. Also, note that this table has been optimized using Z-order optimization; further details can be found in the extra section.
+Observe that the table's data format is listed as `Managed`, indicating that the table is a managed entity. Also, note that this table has been optimized using Z-order optimization; further details can be found in the extra section about [V-Order](#verify-v-order).
 ![Step](../screenshots/1/29.jpg)
 
 > [!TIP]
